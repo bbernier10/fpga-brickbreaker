@@ -1,0 +1,33 @@
+module Video(
+			iH_Cont,			
+			iV_Cont,
+			//	VGA Side
+			oVGA_R,
+			oVGA_G,
+			oVGA_B,
+			//	Control Signal
+			iCLK,
+			iRST_N	
+		);
+
+input [9:0]	H_Cont;
+input [9:0]	V_Cont;
+
+//	VGA Side
+output			[9:0]	oVGA_R;
+output			[9:0]	oVGA_G;
+output			[9:0]	oVGA_B;
+
+//	Control Signal
+input						iCLK;
+input						iRST_N;
+
+always@(posedge iCLK or negedge iRST_N) 
+begin
+	if(!iRST_N)
+	else
+	begin
+	end
+	
+	
+end

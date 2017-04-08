@@ -1,0 +1,22 @@
+module Bricks_Left(
+			Bricks_Left
+			SW,
+			Score,
+			iCLK
+		);
+
+input 				Ball;
+input 				Collision;
+input		[17:0]	SW;
+input		[9:0]		row_bricks;
+input 				iCLK;
+
+output	[15:0]	Score;
+
+reg 		[9:0]		iScore=0;
+
+always @(flag) begin
+	if(SW[16])									iScore <= 0;
+
+
+endmodule

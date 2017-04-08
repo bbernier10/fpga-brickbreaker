@@ -1,0 +1,1581 @@
+Analysis & Synthesis report for BrickBreaker_2
+Mon Dec 01 13:39:05 2014
+Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis IP Cores Summary
+  9. State Machine - |BrickBreaker_2|LCD_TEST:u5|mLCD_ST
+ 10. State Machine - |BrickBreaker_2|LCD_TEST:u5|LCD_Controller:u0|ST
+ 11. State Machine - |BrickBreaker_2|ps2_keyboard:u3|m1_state
+ 12. Registers Removed During Synthesis
+ 13. Removed Registers Triggering Further Register Optimizations
+ 14. General Register Statistics
+ 15. Inverted Register Statistics
+ 16. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 17. Parameter Settings for User Entity Instance: VGA_Audio_PLL:p1|altpll:altpll_component
+ 18. Parameter Settings for User Entity Instance: VGA_Controller:u1
+ 19. Parameter Settings for User Entity Instance: ps2_keyboard:u3
+ 20. Parameter Settings for User Entity Instance: AUDIO_DAC:u4
+ 21. Parameter Settings for User Entity Instance: LCD_TEST:u5
+ 22. Parameter Settings for User Entity Instance: LCD_TEST:u5|LCD_Controller:u0
+ 23. Parameter Settings for User Entity Instance: BrickBreaker:u6|Lives_Counter:l1
+ 24. altpll Parameter Settings by Entity Instance
+ 25. Port Connectivity Checks: "BrickBreaker:u6|Bricks_Left:b3|BCD:bcd1"
+ 26. Port Connectivity Checks: "BrickBreaker:u6"
+ 27. Port Connectivity Checks: "AUDIO_DAC:u4"
+ 28. Port Connectivity Checks: "ps2_keyboard:u3"
+ 29. Port Connectivity Checks: "VGA_Controller:u1"
+ 30. Elapsed Time Per Partition
+ 31. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++--------------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                         ;
++------------------------------------+-------------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Mon Dec 01 13:39:05 2014           ;
+; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
+; Revision Name                      ; BrickBreaker_2                                  ;
+; Top-level Entity Name              ; BrickBreaker_2                                  ;
+; Family                             ; Cyclone II                                      ;
+; Total logic elements               ; 2,480                                           ;
+;     Total combinational functions  ; 2,443                                           ;
+;     Dedicated logic registers      ; 628                                             ;
+; Total registers                    ; 628                                             ;
+; Total pins                         ; 164                                             ;
+; Total virtual pins                 ; 0                                               ;
+; Total memory bits                  ; 0                                               ;
+; Embedded Multiplier 9-bit elements ; 0                                               ;
+; Total PLLs                         ; 1                                               ;
++------------------------------------+-------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                     ; EP2C35F672C6       ;                    ;
+; Top-level entity name                                                      ; BrickBreaker_2     ; BrickBreaker_2     ;
+; Family name                                                                ; Cyclone II         ; Stratix            ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Maximum processors allowed for parallel compilation                        ; 1                  ; 1                  ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; Off                ; Off                ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 100                ; 100                ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
+; Synthesis Seed                                                             ; 1                  ; 1                  ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 2      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                    ;
++----------------------------------+-----------------+-----------------------------+----------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                   ; File Name with Absolute Path                                                                 ; Library ;
++----------------------------------+-----------------+-----------------------------+----------------------------------------------------------------------------------------------+---------+
+; BrickBreaker_2.v                 ; yes             ; User Verilog HDL File       ; C:/Users/Brandon/Desktop/DE2/DE2_demonstrations/BrickBreaker_2/BrickBreaker_2.v              ;         ;
+; BrickBreaker/ScoreKeeper.v       ; yes             ; User Verilog HDL File       ; C:/Users/Brandon/Desktop/DE2/DE2_demonstrations/BrickBreaker_2/BrickBreaker/ScoreKeeper.v    ;         ;
+; BrickBreaker/Paddle_Control.v    ; yes             ; User Verilog HDL File       ; C:/Users/Brandon/Desktop/DE2/DE2_demonstrations/BrickBreaker_2/BrickBreaker/Paddle_Control.v ;         ;
+; BrickBreaker/Lives_LEDs.v        ; yes             ; User Verilog HDL File       ; C:/Users/Brandon/Desktop/DE2/DE2_demonstrations/BrickBreaker_2/BrickBreaker/Lives_LEDs.v     ;         ;
+; BrickBreaker/Lives_Counter.v     ; yes             ; User Verilog HDL File       ; C:/Users/Brandon/Desktop/DE2/DE2_demonstrations/BrickBreaker_2/BrickBreaker/Lives_Counter.v  ;         ;
+; BrickBreaker/Bricks_Left.v       ; yes             ; User Verilog HDL File       ; C:/Users/Brandon/Desktop/DE2/DE2_demonstrations/BrickBreaker_2/BrickBreaker/Bricks_Left.v    ;         ;
+; BrickBreaker/Bricks.v            ; yes             ; User Verilog HDL File       ; C:/Users/Brandon/Desktop/DE2/DE2_demonstrations/BrickBreaker_2/BrickBreaker/Bricks.v         ;         ;
+; BrickBreaker/BrickBreaker.v      ; yes             ; User Verilog HDL File       ; C:/Users/Brandon/Desktop/DE2/DE2_demonstrations/BrickBreaker_2/BrickBreaker/BrickBreaker.v   ;         ;
+; BrickBreaker/BCD.v               ; yes             ; User Verilog HDL File       ; C:/Users/Brandon/Desktop/DE2/DE2_demonstrations/BrickBreaker_2/BrickBreaker/BCD.v            ;         ;
+; BrickBreaker/Ball_Movement.v     ; yes             ; User Verilog HDL File       ; C:/Users/Brandon/Desktop/DE2/DE2_demonstrations/BrickBreaker_2/BrickBreaker/Ball_Movement.v  ;         ;
+; Samples/VGA_Param.h              ; yes             ; User Unspecified File       ; C:/Users/Brandon/Desktop/DE2/DE2_demonstrations/BrickBreaker_2/Samples/VGA_Param.h           ;         ;
+; Samples/VGA_Controller.v         ; yes             ; User Verilog HDL File       ; C:/Users/Brandon/Desktop/DE2/DE2_demonstrations/BrickBreaker_2/Samples/VGA_Controller.v      ;         ;
+; Samples/VGA_Audio_PLL.v          ; yes             ; User Wizard-Generated File  ; C:/Users/Brandon/Desktop/DE2/DE2_demonstrations/BrickBreaker_2/Samples/VGA_Audio_PLL.v       ;         ;
+; Samples/SEG7_LUT_8.v             ; yes             ; User Verilog HDL File       ; C:/Users/Brandon/Desktop/DE2/DE2_demonstrations/BrickBreaker_2/Samples/SEG7_LUT_8.v          ;         ;
+; Samples/SEG7_LUT.v               ; yes             ; User Verilog HDL File       ; C:/Users/Brandon/Desktop/DE2/DE2_demonstrations/BrickBreaker_2/Samples/SEG7_LUT.v            ;         ;
+; Samples/Reset_Delay.v            ; yes             ; User Verilog HDL File       ; C:/Users/Brandon/Desktop/DE2/DE2_demonstrations/BrickBreaker_2/Samples/Reset_Delay.v         ;         ;
+; Samples/ps2_keyboard.v           ; yes             ; User Verilog HDL File       ; C:/Users/Brandon/Desktop/DE2/DE2_demonstrations/BrickBreaker_2/Samples/ps2_keyboard.v        ;         ;
+; Samples/LCD_TEST.v               ; yes             ; User Verilog HDL File       ; C:/Users/Brandon/Desktop/DE2/DE2_demonstrations/BrickBreaker_2/Samples/LCD_TEST.v            ;         ;
+; Samples/LCD_Controller.v         ; yes             ; User Verilog HDL File       ; C:/Users/Brandon/Desktop/DE2/DE2_demonstrations/BrickBreaker_2/Samples/LCD_Controller.v      ;         ;
+; Samples/AUDIO_DAC.v              ; yes             ; User Verilog HDL File       ; C:/Users/Brandon/Desktop/DE2/DE2_demonstrations/BrickBreaker_2/Samples/AUDIO_DAC.v           ;         ;
+; altpll.tdf                       ; yes             ; Megafunction                ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altpll.tdf                                 ;         ;
+; aglobal130.inc                   ; yes             ; Megafunction                ; c:/altera/13.0sp1/quartus/libraries/megafunctions/aglobal130.inc                             ;         ;
+; stratix_pll.inc                  ; yes             ; Megafunction                ; c:/altera/13.0sp1/quartus/libraries/megafunctions/stratix_pll.inc                            ;         ;
+; stratixii_pll.inc                ; yes             ; Megafunction                ; c:/altera/13.0sp1/quartus/libraries/megafunctions/stratixii_pll.inc                          ;         ;
+; cycloneii_pll.inc                ; yes             ; Megafunction                ; c:/altera/13.0sp1/quartus/libraries/megafunctions/cycloneii_pll.inc                          ;         ;
++----------------------------------+-----------------+-----------------------------+----------------------------------------------------------------------------------------------+---------+
+
+
++----------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                                                  ;
++---------------------------------------------+------------------------------------------------+
+; Resource                                    ; Usage                                          ;
++---------------------------------------------+------------------------------------------------+
+; Estimated Total logic elements              ; 2,480                                          ;
+;                                             ;                                                ;
+; Total combinational functions               ; 2443                                           ;
+; Logic element usage by number of LUT inputs ;                                                ;
+;     -- 4 input functions                    ; 1254                                           ;
+;     -- 3 input functions                    ; 526                                            ;
+;     -- <=2 input functions                  ; 663                                            ;
+;                                             ;                                                ;
+; Logic elements by mode                      ;                                                ;
+;     -- normal mode                          ; 1881                                           ;
+;     -- arithmetic mode                      ; 562                                            ;
+;                                             ;                                                ;
+; Total registers                             ; 628                                            ;
+;     -- Dedicated logic registers            ; 628                                            ;
+;     -- I/O registers                        ; 0                                              ;
+;                                             ;                                                ;
+; I/O pins                                    ; 164                                            ;
+; Embedded Multiplier 9-bit elements          ; 0                                              ;
+; Total PLLs                                  ; 1                                              ;
+;     -- PLLs                                 ; 1                                              ;
+;                                             ;                                                ;
+; Maximum fan-out node                        ; VGA_Audio_PLL:p1|altpll:altpll_component|_clk0 ;
+; Maximum fan-out                             ; 473                                            ;
+; Total fan-out                               ; 9605                                           ;
+; Average fan-out                             ; 2.97                                           ;
++---------------------------------------------+------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                   ;
++---------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------+--------------+
+; Compilation Hierarchy Node      ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                      ; Library Name ;
++---------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------+--------------+
+; |BrickBreaker_2                 ; 2443 (0)          ; 628 (0)      ; 0           ; 0            ; 0       ; 0         ; 164  ; 0            ; |BrickBreaker_2                                          ; work         ;
+;    |AUDIO_DAC:u4|               ; 103 (103)         ; 24 (24)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |BrickBreaker_2|AUDIO_DAC:u4                             ; work         ;
+;    |BrickBreaker:u6|            ; 1833 (101)        ; 394 (10)     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |BrickBreaker_2|BrickBreaker:u6                          ; work         ;
+;       |Ball_Movement:b1|        ; 839 (839)         ; 329 (329)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |BrickBreaker_2|BrickBreaker:u6|Ball_Movement:b1         ; work         ;
+;       |Bricks:b2|               ; 187 (187)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |BrickBreaker_2|BrickBreaker:u6|Bricks:b2                ; work         ;
+;       |Bricks_Left:b3|          ; 330 (306)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |BrickBreaker_2|BrickBreaker:u6|Bricks_Left:b3           ; work         ;
+;          |BCD:bcd1|             ; 24 (24)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |BrickBreaker_2|BrickBreaker:u6|Bricks_Left:b3|BCD:bcd1  ; work         ;
+;       |Lives_Counter:l1|        ; 13 (13)           ; 9 (9)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |BrickBreaker_2|BrickBreaker:u6|Lives_Counter:l1         ; work         ;
+;       |Lives_LEDs:l2|           ; 16 (16)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |BrickBreaker_2|BrickBreaker:u6|Lives_LEDs:l2            ; work         ;
+;       |Paddle_Control:p1|       ; 214 (214)         ; 36 (36)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |BrickBreaker_2|BrickBreaker:u6|Paddle_Control:p1        ; work         ;
+;       |ScoreKeeper:s1|          ; 133 (85)          ; 10 (10)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |BrickBreaker_2|BrickBreaker:u6|ScoreKeeper:s1           ; work         ;
+;          |BCD:bcd2|             ; 48 (48)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |BrickBreaker_2|BrickBreaker:u6|ScoreKeeper:s1|BCD:bcd2  ; work         ;
+;    |LCD_TEST:u5|                ; 96 (75)           ; 51 (38)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |BrickBreaker_2|LCD_TEST:u5                              ; work         ;
+;       |LCD_Controller:u0|       ; 21 (21)           ; 13 (13)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |BrickBreaker_2|LCD_TEST:u5|LCD_Controller:u0            ; work         ;
+;    |Reset_Delay:r0|             ; 28 (28)           ; 21 (21)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |BrickBreaker_2|Reset_Delay:r0                           ; work         ;
+;    |SEG7_LUT_8:u0|              ; 49 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |BrickBreaker_2|SEG7_LUT_8:u0                            ; work         ;
+;       |SEG7_LUT:u0|             ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |BrickBreaker_2|SEG7_LUT_8:u0|SEG7_LUT:u0                ; work         ;
+;       |SEG7_LUT:u1|             ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |BrickBreaker_2|SEG7_LUT_8:u0|SEG7_LUT:u1                ; work         ;
+;       |SEG7_LUT:u2|             ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |BrickBreaker_2|SEG7_LUT_8:u0|SEG7_LUT:u2                ; work         ;
+;       |SEG7_LUT:u4|             ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |BrickBreaker_2|SEG7_LUT_8:u0|SEG7_LUT:u4                ; work         ;
+;       |SEG7_LUT:u5|             ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |BrickBreaker_2|SEG7_LUT_8:u0|SEG7_LUT:u5                ; work         ;
+;       |SEG7_LUT:u6|             ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |BrickBreaker_2|SEG7_LUT_8:u0|SEG7_LUT:u6                ; work         ;
+;       |SEG7_LUT:u7|             ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |BrickBreaker_2|SEG7_LUT_8:u0|SEG7_LUT:u7                ; work         ;
+;    |VGA_Audio_PLL:p1|           ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |BrickBreaker_2|VGA_Audio_PLL:p1                         ; work         ;
+;       |altpll:altpll_component| ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |BrickBreaker_2|VGA_Audio_PLL:p1|altpll:altpll_component ; work         ;
+;    |VGA_Controller:u1|          ; 71 (71)           ; 82 (82)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |BrickBreaker_2|VGA_Controller:u1                        ; work         ;
+;    |ps2_keyboard:u3|            ; 263 (263)         ; 56 (56)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |BrickBreaker_2|ps2_keyboard:u3                          ; work         ;
++---------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis IP Cores Summary                                                                                                                                                     ;
++--------+--------------+---------+--------------+--------------+----------------------------------+----------------------------------------------------------------------------------------+
+; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance                  ; IP Include File                                                                        ;
++--------+--------------+---------+--------------+--------------+----------------------------------+----------------------------------------------------------------------------------------+
+; Altera ; ALTPLL       ; N/A     ; N/A          ; N/A          ; |BrickBreaker_2|VGA_Audio_PLL:p1 ; C:/Users/Brandon/Desktop/DE2/DE2_demonstrations/BrickBreaker_2/Samples/VGA_Audio_PLL.v ;
++--------+--------------+---------+--------------+--------------+----------------------------------+----------------------------------------------------------------------------------------+
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------+
+; State Machine - |BrickBreaker_2|LCD_TEST:u5|mLCD_ST                                ;
++----------------+----------------+----------------+----------------+----------------+
+; Name           ; mLCD_ST.000011 ; mLCD_ST.000010 ; mLCD_ST.000001 ; mLCD_ST.000000 ;
++----------------+----------------+----------------+----------------+----------------+
+; mLCD_ST.000000 ; 0              ; 0              ; 0              ; 0              ;
+; mLCD_ST.000001 ; 0              ; 0              ; 1              ; 1              ;
+; mLCD_ST.000010 ; 0              ; 1              ; 0              ; 1              ;
+; mLCD_ST.000011 ; 1              ; 0              ; 0              ; 1              ;
++----------------+----------------+----------------+----------------+----------------+
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------+
+; State Machine - |BrickBreaker_2|LCD_TEST:u5|LCD_Controller:u0|ST ;
++-------+-------+-------+-------+----------------------------------+
+; Name  ; ST.11 ; ST.10 ; ST.01 ; ST.00                            ;
++-------+-------+-------+-------+----------------------------------+
+; ST.00 ; 0     ; 0     ; 0     ; 0                                ;
+; ST.01 ; 0     ; 0     ; 1     ; 1                                ;
+; ST.10 ; 0     ; 1     ; 0     ; 1                                ;
+; ST.11 ; 1     ; 0     ; 0     ; 1                                ;
++-------+-------+-------+-------+----------------------------------+
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |BrickBreaker_2|ps2_keyboard:u3|m1_state                                                                                                                                                                                                                                                                                                                                                                                                                                                         ;
++--------------------------------------+-----------------------------------+------------------------------------+----------------------------+---------------------------------+---------------------------------+-----------------------------------+--------------------------------------+------------------------------+----------------------------------+----------------------+----------------------+----------------------------+---------------------------+----------------------+----------------------+
+; Name                                 ; m1_state.m1_rx_rising_edge_marker ; m1_state.m1_rx_falling_edge_marker ; m1_state.m1_tx_reset_timer ; m1_state.m1_tx_first_wait_clk_l ; m1_state.m1_tx_first_wait_clk_h ; m1_state.m1_tx_rising_edge_marker ; m1_state.m1_tx_error_no_keyboard_ack ; m1_state.m1_tx_done_recovery ; m1_state.m1_tx_wait_keyboard_ack ; m1_state.m1_tx_clk_l ; m1_state.m1_tx_clk_h ; m1_state.m1_tx_force_clk_l ; m1_state.m1_tx_wait_clk_h ; m1_state.m1_rx_clk_l ; m1_state.m1_rx_clk_h ;
++--------------------------------------+-----------------------------------+------------------------------------+----------------------------+---------------------------------+---------------------------------+-----------------------------------+--------------------------------------+------------------------------+----------------------------------+----------------------+----------------------+----------------------------+---------------------------+----------------------+----------------------+
+; m1_state.m1_rx_clk_h                 ; 0                                 ; 0                                  ; 0                          ; 0                               ; 0                               ; 0                                 ; 0                                    ; 0                            ; 0                                ; 0                    ; 0                    ; 0                          ; 0                         ; 0                    ; 0                    ;
+; m1_state.m1_rx_clk_l                 ; 0                                 ; 0                                  ; 0                          ; 0                               ; 0                               ; 0                                 ; 0                                    ; 0                            ; 0                                ; 0                    ; 0                    ; 0                          ; 0                         ; 1                    ; 1                    ;
+; m1_state.m1_tx_wait_clk_h            ; 0                                 ; 0                                  ; 0                          ; 0                               ; 0                               ; 0                                 ; 0                                    ; 0                            ; 0                                ; 0                    ; 0                    ; 0                          ; 1                         ; 0                    ; 1                    ;
+; m1_state.m1_tx_force_clk_l           ; 0                                 ; 0                                  ; 0                          ; 0                               ; 0                               ; 0                                 ; 0                                    ; 0                            ; 0                                ; 0                    ; 0                    ; 1                          ; 0                         ; 0                    ; 1                    ;
+; m1_state.m1_tx_clk_h                 ; 0                                 ; 0                                  ; 0                          ; 0                               ; 0                               ; 0                                 ; 0                                    ; 0                            ; 0                                ; 0                    ; 1                    ; 0                          ; 0                         ; 0                    ; 1                    ;
+; m1_state.m1_tx_clk_l                 ; 0                                 ; 0                                  ; 0                          ; 0                               ; 0                               ; 0                                 ; 0                                    ; 0                            ; 0                                ; 1                    ; 0                    ; 0                          ; 0                         ; 0                    ; 1                    ;
+; m1_state.m1_tx_wait_keyboard_ack     ; 0                                 ; 0                                  ; 0                          ; 0                               ; 0                               ; 0                                 ; 0                                    ; 0                            ; 1                                ; 0                    ; 0                    ; 0                          ; 0                         ; 0                    ; 1                    ;
+; m1_state.m1_tx_done_recovery         ; 0                                 ; 0                                  ; 0                          ; 0                               ; 0                               ; 0                                 ; 0                                    ; 1                            ; 0                                ; 0                    ; 0                    ; 0                          ; 0                         ; 0                    ; 1                    ;
+; m1_state.m1_tx_error_no_keyboard_ack ; 0                                 ; 0                                  ; 0                          ; 0                               ; 0                               ; 0                                 ; 1                                    ; 0                            ; 0                                ; 0                    ; 0                    ; 0                          ; 0                         ; 0                    ; 1                    ;
+; m1_state.m1_tx_rising_edge_marker    ; 0                                 ; 0                                  ; 0                          ; 0                               ; 0                               ; 1                                 ; 0                                    ; 0                            ; 0                                ; 0                    ; 0                    ; 0                          ; 0                         ; 0                    ; 1                    ;
+; m1_state.m1_tx_first_wait_clk_h      ; 0                                 ; 0                                  ; 0                          ; 0                               ; 1                               ; 0                                 ; 0                                    ; 0                            ; 0                                ; 0                    ; 0                    ; 0                          ; 0                         ; 0                    ; 1                    ;
+; m1_state.m1_tx_first_wait_clk_l      ; 0                                 ; 0                                  ; 0                          ; 1                               ; 0                               ; 0                                 ; 0                                    ; 0                            ; 0                                ; 0                    ; 0                    ; 0                          ; 0                         ; 0                    ; 1                    ;
+; m1_state.m1_tx_reset_timer           ; 0                                 ; 0                                  ; 1                          ; 0                               ; 0                               ; 0                                 ; 0                                    ; 0                            ; 0                                ; 0                    ; 0                    ; 0                          ; 0                         ; 0                    ; 1                    ;
+; m1_state.m1_rx_falling_edge_marker   ; 0                                 ; 1                                  ; 0                          ; 0                               ; 0                               ; 0                                 ; 0                                    ; 0                            ; 0                                ; 0                    ; 0                    ; 0                          ; 0                         ; 0                    ; 1                    ;
+; m1_state.m1_rx_rising_edge_marker    ; 1                                 ; 0                                  ; 0                          ; 0                               ; 0                               ; 0                                 ; 0                                    ; 0                            ; 0                                ; 0                    ; 0                    ; 0                          ; 0                         ; 0                    ; 1                    ;
++--------------------------------------+-----------------------------------+------------------------------------+----------------------------+---------------------------------+---------------------------------+-----------------------------------+--------------------------------------+------------------------------+----------------------------------+----------------------+----------------------+----------------------------+---------------------------+----------------------+----------------------+
+
+
++------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                             ;
++-------------------------------------------------+----------------------------------------------+
+; Register name                                   ; Reason for Removal                           ;
++-------------------------------------------------+----------------------------------------------+
+; AUDIO_DAC:u4|FLASH_Out_Tmp[0..15]               ; Stuck at GND due to stuck port data_in       ;
+; AUDIO_DAC:u4|FLASH_Out[0..15]                   ; Stuck at GND due to stuck port data_in       ;
+; AUDIO_DAC:u4|SDRAM_Out_Tmp[0..15]               ; Stuck at GND due to stuck port data_in       ;
+; AUDIO_DAC:u4|SDRAM_Out[0..15]                   ; Stuck at GND due to stuck port data_in       ;
+; AUDIO_DAC:u4|SRAM_Out_Tmp[0..15]                ; Stuck at GND due to stuck port data_in       ;
+; AUDIO_DAC:u4|SRAM_Out[0..15]                    ; Stuck at GND due to stuck port data_in       ;
+; AUDIO_DAC:u4|LRCK_2X_DIV[0..7]                  ; Lost fanout                                  ;
+; AUDIO_DAC:u4|LRCK_4X_DIV[0..6]                  ; Lost fanout                                  ;
+; AUDIO_DAC:u4|LRCK_2X                            ; Lost fanout                                  ;
+; AUDIO_DAC:u4|LRCK_4X                            ; Lost fanout                                  ;
+; AUDIO_DAC:u4|FLASH_Cont[0..19]                  ; Lost fanout                                  ;
+; BrickBreaker:u6|Ball_Movement:b1|ballY[0]       ; Stuck at GND due to stuck port data_in       ;
+; BrickBreaker:u6|Ball_Movement:b1|ballX[0]       ; Stuck at VCC due to stuck port data_in       ;
+; ps2_keyboard:u3|hold_released                   ; Stuck at GND due to stuck port data_in       ;
+; BrickBreaker:u6|oVGA_B[4,6..8]                  ; Merged with BrickBreaker:u6|oVGA_B[0]        ;
+; BrickBreaker:u6|oVGA_B[2,9]                     ; Merged with BrickBreaker:u6|oVGA_B[1]        ;
+; BrickBreaker:u6|oVGA_B[5]                       ; Merged with BrickBreaker:u6|oVGA_B[3]        ;
+; BrickBreaker:u6|oVGA_G[4,8]                     ; Merged with BrickBreaker:u6|oVGA_G[0]        ;
+; BrickBreaker:u6|oVGA_G[7]                       ; Merged with BrickBreaker:u6|oVGA_G[1]        ;
+; BrickBreaker:u6|oVGA_G[6]                       ; Merged with BrickBreaker:u6|oVGA_G[2]        ;
+; BrickBreaker:u6|oVGA_G[5]                       ; Merged with BrickBreaker:u6|oVGA_G[3]        ;
+; BrickBreaker:u6|oVGA_R[2..4,6,7]                ; Merged with BrickBreaker:u6|oVGA_R[0]        ;
+; BrickBreaker:u6|oVGA_R[5,8,9]                   ; Merged with BrickBreaker:u6|oVGA_R[1]        ;
+; VGA_Controller:u1|Cur_Color_R[1,5,8]            ; Merged with VGA_Controller:u1|Cur_Color_R[9] ;
+; VGA_Controller:u1|Cur_Color_R[0,2..4,6]         ; Merged with VGA_Controller:u1|Cur_Color_R[7] ;
+; VGA_Controller:u1|Cur_Color_G[0,4]              ; Merged with VGA_Controller:u1|Cur_Color_G[8] ;
+; VGA_Controller:u1|Cur_Color_G[1]                ; Merged with VGA_Controller:u1|Cur_Color_G[7] ;
+; VGA_Controller:u1|Cur_Color_G[2]                ; Merged with VGA_Controller:u1|Cur_Color_G[6] ;
+; VGA_Controller:u1|Cur_Color_G[3]                ; Merged with VGA_Controller:u1|Cur_Color_G[5] ;
+; VGA_Controller:u1|Cur_Color_B[1,2]              ; Merged with VGA_Controller:u1|Cur_Color_B[9] ;
+; VGA_Controller:u1|Cur_Color_B[0,4,6,7]          ; Merged with VGA_Controller:u1|Cur_Color_B[8] ;
+; VGA_Controller:u1|Cur_Color_B[3]                ; Merged with VGA_Controller:u1|Cur_Color_B[5] ;
+; ps2_keyboard:u3|rx_ascii[7]                     ; Stuck at GND due to stuck port data_in       ;
+; ps2_keyboard:u3|m1_state.m1_tx_reset_timer      ; Lost fanout                                  ;
+; LCD_TEST:u5|mLCD_ST~8                           ; Lost fanout                                  ;
+; LCD_TEST:u5|mLCD_ST~9                           ; Lost fanout                                  ;
+; LCD_TEST:u5|mLCD_ST~10                          ; Lost fanout                                  ;
+; LCD_TEST:u5|mLCD_ST~11                          ; Lost fanout                                  ;
+; LCD_TEST:u5|mLCD_ST~12                          ; Lost fanout                                  ;
+; LCD_TEST:u5|mLCD_ST~13                          ; Lost fanout                                  ;
+; LCD_TEST:u5|LCD_Controller:u0|ST~8              ; Lost fanout                                  ;
+; LCD_TEST:u5|LCD_Controller:u0|ST~9              ; Lost fanout                                  ;
+; ps2_keyboard:u3|m1_state~2                      ; Lost fanout                                  ;
+; ps2_keyboard:u3|m1_state~3                      ; Lost fanout                                  ;
+; ps2_keyboard:u3|m1_state~4                      ; Lost fanout                                  ;
+; ps2_keyboard:u3|m1_state~5                      ; Lost fanout                                  ;
+; ps2_keyboard:u3|m1_state.m1_tx_force_clk_l      ; Stuck at GND due to stuck port data_in       ;
+; ps2_keyboard:u3|m1_state.m1_tx_first_wait_clk_h ; Stuck at GND due to stuck port data_in       ;
+; ps2_keyboard:u3|m1_state.m1_tx_first_wait_clk_l ; Stuck at GND due to stuck port data_in       ;
+; AUDIO_DAC:u4|BCK_DIV[3]                         ; Stuck at GND due to stuck port data_in       ;
+; Total Number of Removed Registers = 194         ;                                              ;
++-------------------------------------------------+----------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                      ;
++--------------------------------------------+---------------------------+-------------------------------------------------------------------------+
+; Register name                              ; Reason for Removal        ; Registers Removed due to This Register                                  ;
++--------------------------------------------+---------------------------+-------------------------------------------------------------------------+
+; AUDIO_DAC:u4|FLASH_Out_Tmp[15]             ; Stuck at GND              ; AUDIO_DAC:u4|FLASH_Out[15], AUDIO_DAC:u4|LRCK_2X, AUDIO_DAC:u4|LRCK_4X, ;
+;                                            ; due to stuck port data_in ; AUDIO_DAC:u4|FLASH_Cont[0]                                              ;
+; AUDIO_DAC:u4|FLASH_Out_Tmp[14]             ; Stuck at GND              ; AUDIO_DAC:u4|FLASH_Out[14]                                              ;
+;                                            ; due to stuck port data_in ;                                                                         ;
+; AUDIO_DAC:u4|FLASH_Out_Tmp[13]             ; Stuck at GND              ; AUDIO_DAC:u4|FLASH_Out[13]                                              ;
+;                                            ; due to stuck port data_in ;                                                                         ;
+; AUDIO_DAC:u4|FLASH_Out_Tmp[12]             ; Stuck at GND              ; AUDIO_DAC:u4|FLASH_Out[12]                                              ;
+;                                            ; due to stuck port data_in ;                                                                         ;
+; AUDIO_DAC:u4|FLASH_Out_Tmp[11]             ; Stuck at GND              ; AUDIO_DAC:u4|FLASH_Out[11]                                              ;
+;                                            ; due to stuck port data_in ;                                                                         ;
+; AUDIO_DAC:u4|FLASH_Out_Tmp[10]             ; Stuck at GND              ; AUDIO_DAC:u4|FLASH_Out[10]                                              ;
+;                                            ; due to stuck port data_in ;                                                                         ;
+; AUDIO_DAC:u4|FLASH_Out_Tmp[9]              ; Stuck at GND              ; AUDIO_DAC:u4|FLASH_Out[9]                                               ;
+;                                            ; due to stuck port data_in ;                                                                         ;
+; AUDIO_DAC:u4|FLASH_Out_Tmp[8]              ; Stuck at GND              ; AUDIO_DAC:u4|FLASH_Out[8]                                               ;
+;                                            ; due to stuck port data_in ;                                                                         ;
+; AUDIO_DAC:u4|FLASH_Out_Tmp[7]              ; Stuck at GND              ; AUDIO_DAC:u4|FLASH_Out[7]                                               ;
+;                                            ; due to stuck port data_in ;                                                                         ;
+; AUDIO_DAC:u4|FLASH_Out_Tmp[6]              ; Stuck at GND              ; AUDIO_DAC:u4|FLASH_Out[6]                                               ;
+;                                            ; due to stuck port data_in ;                                                                         ;
+; AUDIO_DAC:u4|FLASH_Out_Tmp[5]              ; Stuck at GND              ; AUDIO_DAC:u4|FLASH_Out[5]                                               ;
+;                                            ; due to stuck port data_in ;                                                                         ;
+; AUDIO_DAC:u4|FLASH_Out_Tmp[4]              ; Stuck at GND              ; AUDIO_DAC:u4|FLASH_Out[4]                                               ;
+;                                            ; due to stuck port data_in ;                                                                         ;
+; AUDIO_DAC:u4|FLASH_Out_Tmp[3]              ; Stuck at GND              ; AUDIO_DAC:u4|FLASH_Out[3]                                               ;
+;                                            ; due to stuck port data_in ;                                                                         ;
+; AUDIO_DAC:u4|FLASH_Out_Tmp[2]              ; Stuck at GND              ; AUDIO_DAC:u4|FLASH_Out[2]                                               ;
+;                                            ; due to stuck port data_in ;                                                                         ;
+; AUDIO_DAC:u4|FLASH_Out_Tmp[1]              ; Stuck at GND              ; AUDIO_DAC:u4|FLASH_Out[1]                                               ;
+;                                            ; due to stuck port data_in ;                                                                         ;
+; AUDIO_DAC:u4|FLASH_Out_Tmp[0]              ; Stuck at GND              ; AUDIO_DAC:u4|FLASH_Out[0]                                               ;
+;                                            ; due to stuck port data_in ;                                                                         ;
+; AUDIO_DAC:u4|SDRAM_Out_Tmp[15]             ; Stuck at GND              ; AUDIO_DAC:u4|SDRAM_Out[15]                                              ;
+;                                            ; due to stuck port data_in ;                                                                         ;
+; AUDIO_DAC:u4|SDRAM_Out_Tmp[14]             ; Stuck at GND              ; AUDIO_DAC:u4|SDRAM_Out[14]                                              ;
+;                                            ; due to stuck port data_in ;                                                                         ;
+; AUDIO_DAC:u4|SDRAM_Out_Tmp[13]             ; Stuck at GND              ; AUDIO_DAC:u4|SDRAM_Out[13]                                              ;
+;                                            ; due to stuck port data_in ;                                                                         ;
+; AUDIO_DAC:u4|SDRAM_Out_Tmp[12]             ; Stuck at GND              ; AUDIO_DAC:u4|SDRAM_Out[12]                                              ;
+;                                            ; due to stuck port data_in ;                                                                         ;
+; AUDIO_DAC:u4|SDRAM_Out_Tmp[11]             ; Stuck at GND              ; AUDIO_DAC:u4|SDRAM_Out[11]                                              ;
+;                                            ; due to stuck port data_in ;                                                                         ;
+; AUDIO_DAC:u4|SDRAM_Out_Tmp[10]             ; Stuck at GND              ; AUDIO_DAC:u4|SDRAM_Out[10]                                              ;
+;                                            ; due to stuck port data_in ;                                                                         ;
+; AUDIO_DAC:u4|SDRAM_Out_Tmp[9]              ; Stuck at GND              ; AUDIO_DAC:u4|SDRAM_Out[9]                                               ;
+;                                            ; due to stuck port data_in ;                                                                         ;
+; AUDIO_DAC:u4|SDRAM_Out_Tmp[8]              ; Stuck at GND              ; AUDIO_DAC:u4|SDRAM_Out[8]                                               ;
+;                                            ; due to stuck port data_in ;                                                                         ;
+; AUDIO_DAC:u4|SDRAM_Out_Tmp[7]              ; Stuck at GND              ; AUDIO_DAC:u4|SDRAM_Out[7]                                               ;
+;                                            ; due to stuck port data_in ;                                                                         ;
+; AUDIO_DAC:u4|SDRAM_Out_Tmp[6]              ; Stuck at GND              ; AUDIO_DAC:u4|SDRAM_Out[6]                                               ;
+;                                            ; due to stuck port data_in ;                                                                         ;
+; AUDIO_DAC:u4|SDRAM_Out_Tmp[5]              ; Stuck at GND              ; AUDIO_DAC:u4|SDRAM_Out[5]                                               ;
+;                                            ; due to stuck port data_in ;                                                                         ;
+; AUDIO_DAC:u4|SDRAM_Out_Tmp[4]              ; Stuck at GND              ; AUDIO_DAC:u4|SDRAM_Out[4]                                               ;
+;                                            ; due to stuck port data_in ;                                                                         ;
+; AUDIO_DAC:u4|SDRAM_Out_Tmp[3]              ; Stuck at GND              ; AUDIO_DAC:u4|SDRAM_Out[3]                                               ;
+;                                            ; due to stuck port data_in ;                                                                         ;
+; AUDIO_DAC:u4|SDRAM_Out_Tmp[2]              ; Stuck at GND              ; AUDIO_DAC:u4|SDRAM_Out[2]                                               ;
+;                                            ; due to stuck port data_in ;                                                                         ;
+; AUDIO_DAC:u4|SDRAM_Out_Tmp[1]              ; Stuck at GND              ; AUDIO_DAC:u4|SDRAM_Out[1]                                               ;
+;                                            ; due to stuck port data_in ;                                                                         ;
+; AUDIO_DAC:u4|SDRAM_Out_Tmp[0]              ; Stuck at GND              ; AUDIO_DAC:u4|SDRAM_Out[0]                                               ;
+;                                            ; due to stuck port data_in ;                                                                         ;
+; AUDIO_DAC:u4|SRAM_Out_Tmp[15]              ; Stuck at GND              ; AUDIO_DAC:u4|SRAM_Out[15]                                               ;
+;                                            ; due to stuck port data_in ;                                                                         ;
+; AUDIO_DAC:u4|SRAM_Out_Tmp[14]              ; Stuck at GND              ; AUDIO_DAC:u4|SRAM_Out[14]                                               ;
+;                                            ; due to stuck port data_in ;                                                                         ;
+; AUDIO_DAC:u4|SRAM_Out_Tmp[13]              ; Stuck at GND              ; AUDIO_DAC:u4|SRAM_Out[13]                                               ;
+;                                            ; due to stuck port data_in ;                                                                         ;
+; AUDIO_DAC:u4|SRAM_Out_Tmp[12]              ; Stuck at GND              ; AUDIO_DAC:u4|SRAM_Out[12]                                               ;
+;                                            ; due to stuck port data_in ;                                                                         ;
+; AUDIO_DAC:u4|SRAM_Out_Tmp[11]              ; Stuck at GND              ; AUDIO_DAC:u4|SRAM_Out[11]                                               ;
+;                                            ; due to stuck port data_in ;                                                                         ;
+; AUDIO_DAC:u4|SRAM_Out_Tmp[10]              ; Stuck at GND              ; AUDIO_DAC:u4|SRAM_Out[10]                                               ;
+;                                            ; due to stuck port data_in ;                                                                         ;
+; AUDIO_DAC:u4|SRAM_Out_Tmp[9]               ; Stuck at GND              ; AUDIO_DAC:u4|SRAM_Out[9]                                                ;
+;                                            ; due to stuck port data_in ;                                                                         ;
+; AUDIO_DAC:u4|SRAM_Out_Tmp[8]               ; Stuck at GND              ; AUDIO_DAC:u4|SRAM_Out[8]                                                ;
+;                                            ; due to stuck port data_in ;                                                                         ;
+; AUDIO_DAC:u4|SRAM_Out_Tmp[7]               ; Stuck at GND              ; AUDIO_DAC:u4|SRAM_Out[7]                                                ;
+;                                            ; due to stuck port data_in ;                                                                         ;
+; AUDIO_DAC:u4|SRAM_Out_Tmp[6]               ; Stuck at GND              ; AUDIO_DAC:u4|SRAM_Out[6]                                                ;
+;                                            ; due to stuck port data_in ;                                                                         ;
+; AUDIO_DAC:u4|SRAM_Out_Tmp[5]               ; Stuck at GND              ; AUDIO_DAC:u4|SRAM_Out[5]                                                ;
+;                                            ; due to stuck port data_in ;                                                                         ;
+; AUDIO_DAC:u4|SRAM_Out_Tmp[4]               ; Stuck at GND              ; AUDIO_DAC:u4|SRAM_Out[4]                                                ;
+;                                            ; due to stuck port data_in ;                                                                         ;
+; AUDIO_DAC:u4|SRAM_Out_Tmp[3]               ; Stuck at GND              ; AUDIO_DAC:u4|SRAM_Out[3]                                                ;
+;                                            ; due to stuck port data_in ;                                                                         ;
+; AUDIO_DAC:u4|SRAM_Out_Tmp[2]               ; Stuck at GND              ; AUDIO_DAC:u4|SRAM_Out[2]                                                ;
+;                                            ; due to stuck port data_in ;                                                                         ;
+; AUDIO_DAC:u4|SRAM_Out_Tmp[1]               ; Stuck at GND              ; AUDIO_DAC:u4|SRAM_Out[1]                                                ;
+;                                            ; due to stuck port data_in ;                                                                         ;
+; AUDIO_DAC:u4|SRAM_Out_Tmp[0]               ; Stuck at GND              ; AUDIO_DAC:u4|SRAM_Out[0]                                                ;
+;                                            ; due to stuck port data_in ;                                                                         ;
+; ps2_keyboard:u3|m1_state.m1_tx_force_clk_l ; Stuck at GND              ; ps2_keyboard:u3|m1_state.m1_tx_first_wait_clk_h                         ;
+;                                            ; due to stuck port data_in ;                                                                         ;
++--------------------------------------------+---------------------------+-------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 628   ;
+; Number of registers using Synchronous Clear  ; 118   ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 146   ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 165   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++---------------------------------------------------------------+
+; Inverted Register Statistics                                  ;
++-----------------------------------------------------+---------+
+; Inverted Register                                   ; Fan out ;
++-----------------------------------------------------+---------+
+; BrickBreaker:u6|Lives_Counter:l1|Lives[1]           ; 17      ;
+; BrickBreaker:u6|Lives_Counter:l1|Lives[0]           ; 15      ;
+; BrickBreaker:u6|Ball_Movement:b1|ballX[8]           ; 15      ;
+; BrickBreaker:u6|Ball_Movement:b1|ballX[6]           ; 15      ;
+; BrickBreaker:u6|Ball_Movement:b1|ballX[1]           ; 13      ;
+; BrickBreaker:u6|Ball_Movement:b1|ballY[8]           ; 10      ;
+; BrickBreaker:u6|Ball_Movement:b1|ballY[7]           ; 9       ;
+; BrickBreaker:u6|Ball_Movement:b1|ballY[5]           ; 9       ;
+; BrickBreaker:u6|Ball_Movement:b1|ballY[4]           ; 9       ;
+; BrickBreaker:u6|Ball_Movement:b1|ballY[3]           ; 9       ;
+; BrickBreaker:u6|Ball_Movement:b1|ballXdir           ; 3       ;
+; BrickBreaker:u6|Paddle_Control:p1|paddlePosition[8] ; 6       ;
+; BrickBreaker:u6|Paddle_Control:p1|paddlePosition[3] ; 7       ;
+; BrickBreaker:u6|Paddle_Control:p1|paddlePosition[0] ; 8       ;
+; Total number of inverted registers = 14             ;         ;
++-----------------------------------------------------+---------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                    ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                          ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------+
+; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |BrickBreaker_2|ps2_keyboard:u3|q[2]                                ;
+; 3:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |BrickBreaker_2|ps2_keyboard:u3|rx_ascii[6]                         ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |BrickBreaker_2|ps2_keyboard:u3|timer_5usec_count[4]                ;
+; 3:1                ; 12 bits   ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; Yes        ; |BrickBreaker_2|ps2_keyboard:u3|timer_60usec_count[8]               ;
+; 3:1                ; 26 bits   ; 52 LEs        ; 26 LEs               ; 26 LEs                 ; Yes        ; |BrickBreaker_2|BrickBreaker:u6|Ball_Movement:b1|counter[12]        ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |BrickBreaker_2|LCD_TEST:u5|LCD_Controller:u0|oDone                 ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |BrickBreaker_2|ps2_keyboard:u3|bit_count[1]                        ;
+; 5:1                ; 26 bits   ; 78 LEs        ; 26 LEs               ; 52 LEs                 ; Yes        ; |BrickBreaker_2|BrickBreaker:u6|Paddle_Control:p1|counter[23]       ;
+; 4:1                ; 140 bits  ; 280 LEs       ; 280 LEs              ; 0 LEs                  ; Yes        ; |BrickBreaker_2|BrickBreaker:u6|Ball_Movement:b1|flag[47]           ;
+; 6:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |BrickBreaker_2|BrickBreaker:u6|ScoreKeeper:s1|iScore[2]            ;
+; 6:1                ; 7 bits    ; 28 LEs        ; 21 LEs               ; 7 LEs                  ; Yes        ; |BrickBreaker_2|BrickBreaker:u6|ScoreKeeper:s1|iScore[7]            ;
+; 6:1                ; 6 bits    ; 24 LEs        ; 18 LEs               ; 6 LEs                  ; Yes        ; |BrickBreaker_2|BrickBreaker:u6|Ball_Movement:b1|ballX[4]           ;
+; 6:1                ; 2 bits    ; 8 LEs         ; 6 LEs                ; 2 LEs                  ; Yes        ; |BrickBreaker_2|BrickBreaker:u6|Ball_Movement:b1|ballY[6]           ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 8 LEs                ; 2 LEs                  ; Yes        ; |BrickBreaker_2|BrickBreaker:u6|oVGA_G[2]                           ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |BrickBreaker_2|BrickBreaker:u6|oVGA_R[0]                           ;
+; 8:1                ; 5 bits    ; 25 LEs        ; 20 LEs               ; 5 LEs                  ; Yes        ; |BrickBreaker_2|BrickBreaker:u6|oVGA_G[1]                           ;
+; 12:1               ; 7 bits    ; 56 LEs        ; 21 LEs               ; 35 LEs                 ; Yes        ; |BrickBreaker_2|BrickBreaker:u6|Paddle_Control:p1|paddlePosition[6] ;
+; 6:1                ; 2 bits    ; 8 LEs         ; 6 LEs                ; 2 LEs                  ; Yes        ; |BrickBreaker_2|BrickBreaker:u6|Ball_Movement:b1|ballX[8]           ;
+; 6:1                ; 5 bits    ; 20 LEs        ; 15 LEs               ; 5 LEs                  ; Yes        ; |BrickBreaker_2|BrickBreaker:u6|Ball_Movement:b1|ballY[3]           ;
+; 12:1               ; 2 bits    ; 16 LEs        ; 6 LEs                ; 10 LEs                 ; Yes        ; |BrickBreaker_2|BrickBreaker:u6|Paddle_Control:p1|paddlePosition[3] ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |BrickBreaker_2|BrickBreaker:u6|oVGA_G                              ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 6 LEs                ; 2 LEs                  ; No         ; |BrickBreaker_2|LCD_TEST:u5|mLCD_ST                                 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: VGA_Audio_PLL:p1|altpll:altpll_component ;
++-------------------------------+--------------------+----------------------------------+
+; Parameter Name                ; Value              ; Type                             ;
++-------------------------------+--------------------+----------------------------------+
+; OPERATION_MODE                ; SOURCE_SYNCHRONOUS ; Untyped                          ;
+; PLL_TYPE                      ; AUTO               ; Untyped                          ;
+; LPM_HINT                      ; UNUSED             ; Untyped                          ;
+; QUALIFY_CONF_DONE             ; OFF                ; Untyped                          ;
+; COMPENSATE_CLOCK              ; CLK0               ; Untyped                          ;
+; SCAN_CHAIN                    ; LONG               ; Untyped                          ;
+; PRIMARY_CLOCK                 ; INCLK0             ; Untyped                          ;
+; INCLK0_INPUT_FREQUENCY        ; 37037              ; Signed Integer                   ;
+; INCLK1_INPUT_FREQUENCY        ; 0                  ; Untyped                          ;
+; GATE_LOCK_SIGNAL              ; NO                 ; Untyped                          ;
+; GATE_LOCK_COUNTER             ; 0                  ; Untyped                          ;
+; LOCK_HIGH                     ; 1                  ; Untyped                          ;
+; LOCK_LOW                      ; 1                  ; Untyped                          ;
+; VALID_LOCK_MULTIPLIER         ; 1                  ; Untyped                          ;
+; INVALID_LOCK_MULTIPLIER       ; 5                  ; Untyped                          ;
+; SWITCH_OVER_ON_LOSSCLK        ; OFF                ; Untyped                          ;
+; SWITCH_OVER_ON_GATED_LOCK     ; OFF                ; Untyped                          ;
+; ENABLE_SWITCH_OVER_COUNTER    ; OFF                ; Untyped                          ;
+; SKIP_VCO                      ; OFF                ; Untyped                          ;
+; SWITCH_OVER_COUNTER           ; 0                  ; Untyped                          ;
+; SWITCH_OVER_TYPE              ; AUTO               ; Untyped                          ;
+; FEEDBACK_SOURCE               ; EXTCLK0            ; Untyped                          ;
+; BANDWIDTH                     ; 0                  ; Untyped                          ;
+; BANDWIDTH_TYPE                ; AUTO               ; Untyped                          ;
+; SPREAD_FREQUENCY              ; 0                  ; Untyped                          ;
+; DOWN_SPREAD                   ; 0                  ; Untyped                          ;
+; SELF_RESET_ON_GATED_LOSS_LOCK ; OFF                ; Untyped                          ;
+; SELF_RESET_ON_LOSS_LOCK       ; OFF                ; Untyped                          ;
+; CLK9_MULTIPLY_BY              ; 0                  ; Untyped                          ;
+; CLK8_MULTIPLY_BY              ; 0                  ; Untyped                          ;
+; CLK7_MULTIPLY_BY              ; 0                  ; Untyped                          ;
+; CLK6_MULTIPLY_BY              ; 0                  ; Untyped                          ;
+; CLK5_MULTIPLY_BY              ; 1                  ; Untyped                          ;
+; CLK4_MULTIPLY_BY              ; 1                  ; Untyped                          ;
+; CLK3_MULTIPLY_BY              ; 1                  ; Untyped                          ;
+; CLK2_MULTIPLY_BY              ; 14                 ; Signed Integer                   ;
+; CLK1_MULTIPLY_BY              ; 2                  ; Signed Integer                   ;
+; CLK0_MULTIPLY_BY              ; 14                 ; Signed Integer                   ;
+; CLK9_DIVIDE_BY                ; 0                  ; Untyped                          ;
+; CLK8_DIVIDE_BY                ; 0                  ; Untyped                          ;
+; CLK7_DIVIDE_BY                ; 0                  ; Untyped                          ;
+; CLK6_DIVIDE_BY                ; 0                  ; Untyped                          ;
+; CLK5_DIVIDE_BY                ; 1                  ; Untyped                          ;
+; CLK4_DIVIDE_BY                ; 1                  ; Untyped                          ;
+; CLK3_DIVIDE_BY                ; 1                  ; Untyped                          ;
+; CLK2_DIVIDE_BY                ; 15                 ; Signed Integer                   ;
+; CLK1_DIVIDE_BY                ; 3                  ; Signed Integer                   ;
+; CLK0_DIVIDE_BY                ; 15                 ; Signed Integer                   ;
+; CLK9_PHASE_SHIFT              ; 0                  ; Untyped                          ;
+; CLK8_PHASE_SHIFT              ; 0                  ; Untyped                          ;
+; CLK7_PHASE_SHIFT              ; 0                  ; Untyped                          ;
+; CLK6_PHASE_SHIFT              ; 0                  ; Untyped                          ;
+; CLK5_PHASE_SHIFT              ; 0                  ; Untyped                          ;
+; CLK4_PHASE_SHIFT              ; 0                  ; Untyped                          ;
+; CLK3_PHASE_SHIFT              ; 0                  ; Untyped                          ;
+; CLK2_PHASE_SHIFT              ; -9921              ; Untyped                          ;
+; CLK1_PHASE_SHIFT              ; 0                  ; Untyped                          ;
+; CLK0_PHASE_SHIFT              ; 0                  ; Untyped                          ;
+; CLK5_TIME_DELAY               ; 0                  ; Untyped                          ;
+; CLK4_TIME_DELAY               ; 0                  ; Untyped                          ;
+; CLK3_TIME_DELAY               ; 0                  ; Untyped                          ;
+; CLK2_TIME_DELAY               ; 0                  ; Untyped                          ;
+; CLK1_TIME_DELAY               ; 0                  ; Untyped                          ;
+; CLK0_TIME_DELAY               ; 0                  ; Untyped                          ;
+; CLK9_DUTY_CYCLE               ; 50                 ; Untyped                          ;
+; CLK8_DUTY_CYCLE               ; 50                 ; Untyped                          ;
+; CLK7_DUTY_CYCLE               ; 50                 ; Untyped                          ;
+; CLK6_DUTY_CYCLE               ; 50                 ; Untyped                          ;
+; CLK5_DUTY_CYCLE               ; 50                 ; Untyped                          ;
+; CLK4_DUTY_CYCLE               ; 50                 ; Untyped                          ;
+; CLK3_DUTY_CYCLE               ; 50                 ; Untyped                          ;
+; CLK2_DUTY_CYCLE               ; 50                 ; Signed Integer                   ;
+; CLK1_DUTY_CYCLE               ; 50                 ; Signed Integer                   ;
+; CLK0_DUTY_CYCLE               ; 50                 ; Signed Integer                   ;
+; CLK9_USE_EVEN_COUNTER_MODE    ; OFF                ; Untyped                          ;
+; CLK8_USE_EVEN_COUNTER_MODE    ; OFF                ; Untyped                          ;
+; CLK7_USE_EVEN_COUNTER_MODE    ; OFF                ; Untyped                          ;
+; CLK6_USE_EVEN_COUNTER_MODE    ; OFF                ; Untyped                          ;
+; CLK5_USE_EVEN_COUNTER_MODE    ; OFF                ; Untyped                          ;
+; CLK4_USE_EVEN_COUNTER_MODE    ; OFF                ; Untyped                          ;
+; CLK3_USE_EVEN_COUNTER_MODE    ; OFF                ; Untyped                          ;
+; CLK2_USE_EVEN_COUNTER_MODE    ; OFF                ; Untyped                          ;
+; CLK1_USE_EVEN_COUNTER_MODE    ; OFF                ; Untyped                          ;
+; CLK0_USE_EVEN_COUNTER_MODE    ; OFF                ; Untyped                          ;
+; CLK9_USE_EVEN_COUNTER_VALUE   ; OFF                ; Untyped                          ;
+; CLK8_USE_EVEN_COUNTER_VALUE   ; OFF                ; Untyped                          ;
+; CLK7_USE_EVEN_COUNTER_VALUE   ; OFF                ; Untyped                          ;
+; CLK6_USE_EVEN_COUNTER_VALUE   ; OFF                ; Untyped                          ;
+; CLK5_USE_EVEN_COUNTER_VALUE   ; OFF                ; Untyped                          ;
+; CLK4_USE_EVEN_COUNTER_VALUE   ; OFF                ; Untyped                          ;
+; CLK3_USE_EVEN_COUNTER_VALUE   ; OFF                ; Untyped                          ;
+; CLK2_USE_EVEN_COUNTER_VALUE   ; OFF                ; Untyped                          ;
+; CLK1_USE_EVEN_COUNTER_VALUE   ; OFF                ; Untyped                          ;
+; CLK0_USE_EVEN_COUNTER_VALUE   ; OFF                ; Untyped                          ;
+; LOCK_WINDOW_UI                ;  0.05              ; Untyped                          ;
+; LOCK_WINDOW_UI_BITS           ; UNUSED             ; Untyped                          ;
+; VCO_RANGE_DETECTOR_LOW_BITS   ; UNUSED             ; Untyped                          ;
+; VCO_RANGE_DETECTOR_HIGH_BITS  ; UNUSED             ; Untyped                          ;
+; DPA_MULTIPLY_BY               ; 0                  ; Untyped                          ;
+; DPA_DIVIDE_BY                 ; 1                  ; Untyped                          ;
+; DPA_DIVIDER                   ; 0                  ; Untyped                          ;
+; EXTCLK3_MULTIPLY_BY           ; 1                  ; Untyped                          ;
+; EXTCLK2_MULTIPLY_BY           ; 1                  ; Untyped                          ;
+; EXTCLK1_MULTIPLY_BY           ; 1                  ; Untyped                          ;
+; EXTCLK0_MULTIPLY_BY           ; 1                  ; Untyped                          ;
+; EXTCLK3_DIVIDE_BY             ; 1                  ; Untyped                          ;
+; EXTCLK2_DIVIDE_BY             ; 1                  ; Untyped                          ;
+; EXTCLK1_DIVIDE_BY             ; 1                  ; Untyped                          ;
+; EXTCLK0_DIVIDE_BY             ; 1                  ; Untyped                          ;
+; EXTCLK3_PHASE_SHIFT           ; 0                  ; Untyped                          ;
+; EXTCLK2_PHASE_SHIFT           ; 0                  ; Untyped                          ;
+; EXTCLK1_PHASE_SHIFT           ; 0                  ; Untyped                          ;
+; EXTCLK0_PHASE_SHIFT           ; 0                  ; Untyped                          ;
+; EXTCLK3_TIME_DELAY            ; 0                  ; Untyped                          ;
+; EXTCLK2_TIME_DELAY            ; 0                  ; Untyped                          ;
+; EXTCLK1_TIME_DELAY            ; 0                  ; Untyped                          ;
+; EXTCLK0_TIME_DELAY            ; 0                  ; Untyped                          ;
+; EXTCLK3_DUTY_CYCLE            ; 50                 ; Untyped                          ;
+; EXTCLK2_DUTY_CYCLE            ; 50                 ; Untyped                          ;
+; EXTCLK1_DUTY_CYCLE            ; 50                 ; Untyped                          ;
+; EXTCLK0_DUTY_CYCLE            ; 50                 ; Untyped                          ;
+; VCO_MULTIPLY_BY               ; 0                  ; Untyped                          ;
+; VCO_DIVIDE_BY                 ; 0                  ; Untyped                          ;
+; SCLKOUT0_PHASE_SHIFT          ; 0                  ; Untyped                          ;
+; SCLKOUT1_PHASE_SHIFT          ; 0                  ; Untyped                          ;
+; VCO_MIN                       ; 0                  ; Untyped                          ;
+; VCO_MAX                       ; 0                  ; Untyped                          ;
+; VCO_CENTER                    ; 0                  ; Untyped                          ;
+; PFD_MIN                       ; 0                  ; Untyped                          ;
+; PFD_MAX                       ; 0                  ; Untyped                          ;
+; M_INITIAL                     ; 0                  ; Untyped                          ;
+; M                             ; 0                  ; Untyped                          ;
+; N                             ; 1                  ; Untyped                          ;
+; M2                            ; 1                  ; Untyped                          ;
+; N2                            ; 1                  ; Untyped                          ;
+; SS                            ; 1                  ; Untyped                          ;
+; C0_HIGH                       ; 0                  ; Untyped                          ;
+; C1_HIGH                       ; 0                  ; Untyped                          ;
+; C2_HIGH                       ; 0                  ; Untyped                          ;
+; C3_HIGH                       ; 0                  ; Untyped                          ;
+; C4_HIGH                       ; 0                  ; Untyped                          ;
+; C5_HIGH                       ; 0                  ; Untyped                          ;
+; C6_HIGH                       ; 0                  ; Untyped                          ;
+; C7_HIGH                       ; 0                  ; Untyped                          ;
+; C8_HIGH                       ; 0                  ; Untyped                          ;
+; C9_HIGH                       ; 0                  ; Untyped                          ;
+; C0_LOW                        ; 0                  ; Untyped                          ;
+; C1_LOW                        ; 0                  ; Untyped                          ;
+; C2_LOW                        ; 0                  ; Untyped                          ;
+; C3_LOW                        ; 0                  ; Untyped                          ;
+; C4_LOW                        ; 0                  ; Untyped                          ;
+; C5_LOW                        ; 0                  ; Untyped                          ;
+; C6_LOW                        ; 0                  ; Untyped                          ;
+; C7_LOW                        ; 0                  ; Untyped                          ;
+; C8_LOW                        ; 0                  ; Untyped                          ;
+; C9_LOW                        ; 0                  ; Untyped                          ;
+; C0_INITIAL                    ; 0                  ; Untyped                          ;
+; C1_INITIAL                    ; 0                  ; Untyped                          ;
+; C2_INITIAL                    ; 0                  ; Untyped                          ;
+; C3_INITIAL                    ; 0                  ; Untyped                          ;
+; C4_INITIAL                    ; 0                  ; Untyped                          ;
+; C5_INITIAL                    ; 0                  ; Untyped                          ;
+; C6_INITIAL                    ; 0                  ; Untyped                          ;
+; C7_INITIAL                    ; 0                  ; Untyped                          ;
+; C8_INITIAL                    ; 0                  ; Untyped                          ;
+; C9_INITIAL                    ; 0                  ; Untyped                          ;
+; C0_MODE                       ; BYPASS             ; Untyped                          ;
+; C1_MODE                       ; BYPASS             ; Untyped                          ;
+; C2_MODE                       ; BYPASS             ; Untyped                          ;
+; C3_MODE                       ; BYPASS             ; Untyped                          ;
+; C4_MODE                       ; BYPASS             ; Untyped                          ;
+; C5_MODE                       ; BYPASS             ; Untyped                          ;
+; C6_MODE                       ; BYPASS             ; Untyped                          ;
+; C7_MODE                       ; BYPASS             ; Untyped                          ;
+; C8_MODE                       ; BYPASS             ; Untyped                          ;
+; C9_MODE                       ; BYPASS             ; Untyped                          ;
+; C0_PH                         ; 0                  ; Untyped                          ;
+; C1_PH                         ; 0                  ; Untyped                          ;
+; C2_PH                         ; 0                  ; Untyped                          ;
+; C3_PH                         ; 0                  ; Untyped                          ;
+; C4_PH                         ; 0                  ; Untyped                          ;
+; C5_PH                         ; 0                  ; Untyped                          ;
+; C6_PH                         ; 0                  ; Untyped                          ;
+; C7_PH                         ; 0                  ; Untyped                          ;
+; C8_PH                         ; 0                  ; Untyped                          ;
+; C9_PH                         ; 0                  ; Untyped                          ;
+; L0_HIGH                       ; 1                  ; Untyped                          ;
+; L1_HIGH                       ; 1                  ; Untyped                          ;
+; G0_HIGH                       ; 1                  ; Untyped                          ;
+; G1_HIGH                       ; 1                  ; Untyped                          ;
+; G2_HIGH                       ; 1                  ; Untyped                          ;
+; G3_HIGH                       ; 1                  ; Untyped                          ;
+; E0_HIGH                       ; 1                  ; Untyped                          ;
+; E1_HIGH                       ; 1                  ; Untyped                          ;
+; E2_HIGH                       ; 1                  ; Untyped                          ;
+; E3_HIGH                       ; 1                  ; Untyped                          ;
+; L0_LOW                        ; 1                  ; Untyped                          ;
+; L1_LOW                        ; 1                  ; Untyped                          ;
+; G0_LOW                        ; 1                  ; Untyped                          ;
+; G1_LOW                        ; 1                  ; Untyped                          ;
+; G2_LOW                        ; 1                  ; Untyped                          ;
+; G3_LOW                        ; 1                  ; Untyped                          ;
+; E0_LOW                        ; 1                  ; Untyped                          ;
+; E1_LOW                        ; 1                  ; Untyped                          ;
+; E2_LOW                        ; 1                  ; Untyped                          ;
+; E3_LOW                        ; 1                  ; Untyped                          ;
+; L0_INITIAL                    ; 1                  ; Untyped                          ;
+; L1_INITIAL                    ; 1                  ; Untyped                          ;
+; G0_INITIAL                    ; 1                  ; Untyped                          ;
+; G1_INITIAL                    ; 1                  ; Untyped                          ;
+; G2_INITIAL                    ; 1                  ; Untyped                          ;
+; G3_INITIAL                    ; 1                  ; Untyped                          ;
+; E0_INITIAL                    ; 1                  ; Untyped                          ;
+; E1_INITIAL                    ; 1                  ; Untyped                          ;
+; E2_INITIAL                    ; 1                  ; Untyped                          ;
+; E3_INITIAL                    ; 1                  ; Untyped                          ;
+; L0_MODE                       ; BYPASS             ; Untyped                          ;
+; L1_MODE                       ; BYPASS             ; Untyped                          ;
+; G0_MODE                       ; BYPASS             ; Untyped                          ;
+; G1_MODE                       ; BYPASS             ; Untyped                          ;
+; G2_MODE                       ; BYPASS             ; Untyped                          ;
+; G3_MODE                       ; BYPASS             ; Untyped                          ;
+; E0_MODE                       ; BYPASS             ; Untyped                          ;
+; E1_MODE                       ; BYPASS             ; Untyped                          ;
+; E2_MODE                       ; BYPASS             ; Untyped                          ;
+; E3_MODE                       ; BYPASS             ; Untyped                          ;
+; L0_PH                         ; 0                  ; Untyped                          ;
+; L1_PH                         ; 0                  ; Untyped                          ;
+; G0_PH                         ; 0                  ; Untyped                          ;
+; G1_PH                         ; 0                  ; Untyped                          ;
+; G2_PH                         ; 0                  ; Untyped                          ;
+; G3_PH                         ; 0                  ; Untyped                          ;
+; E0_PH                         ; 0                  ; Untyped                          ;
+; E1_PH                         ; 0                  ; Untyped                          ;
+; E2_PH                         ; 0                  ; Untyped                          ;
+; E3_PH                         ; 0                  ; Untyped                          ;
+; M_PH                          ; 0                  ; Untyped                          ;
+; C1_USE_CASC_IN                ; OFF                ; Untyped                          ;
+; C2_USE_CASC_IN                ; OFF                ; Untyped                          ;
+; C3_USE_CASC_IN                ; OFF                ; Untyped                          ;
+; C4_USE_CASC_IN                ; OFF                ; Untyped                          ;
+; C5_USE_CASC_IN                ; OFF                ; Untyped                          ;
+; C6_USE_CASC_IN                ; OFF                ; Untyped                          ;
+; C7_USE_CASC_IN                ; OFF                ; Untyped                          ;
+; C8_USE_CASC_IN                ; OFF                ; Untyped                          ;
+; C9_USE_CASC_IN                ; OFF                ; Untyped                          ;
+; CLK0_COUNTER                  ; G0                 ; Untyped                          ;
+; CLK1_COUNTER                  ; G0                 ; Untyped                          ;
+; CLK2_COUNTER                  ; G0                 ; Untyped                          ;
+; CLK3_COUNTER                  ; G0                 ; Untyped                          ;
+; CLK4_COUNTER                  ; G0                 ; Untyped                          ;
+; CLK5_COUNTER                  ; G0                 ; Untyped                          ;
+; CLK6_COUNTER                  ; E0                 ; Untyped                          ;
+; CLK7_COUNTER                  ; E1                 ; Untyped                          ;
+; CLK8_COUNTER                  ; E2                 ; Untyped                          ;
+; CLK9_COUNTER                  ; E3                 ; Untyped                          ;
+; L0_TIME_DELAY                 ; 0                  ; Untyped                          ;
+; L1_TIME_DELAY                 ; 0                  ; Untyped                          ;
+; G0_TIME_DELAY                 ; 0                  ; Untyped                          ;
+; G1_TIME_DELAY                 ; 0                  ; Untyped                          ;
+; G2_TIME_DELAY                 ; 0                  ; Untyped                          ;
+; G3_TIME_DELAY                 ; 0                  ; Untyped                          ;
+; E0_TIME_DELAY                 ; 0                  ; Untyped                          ;
+; E1_TIME_DELAY                 ; 0                  ; Untyped                          ;
+; E2_TIME_DELAY                 ; 0                  ; Untyped                          ;
+; E3_TIME_DELAY                 ; 0                  ; Untyped                          ;
+; M_TIME_DELAY                  ; 0                  ; Untyped                          ;
+; N_TIME_DELAY                  ; 0                  ; Untyped                          ;
+; EXTCLK3_COUNTER               ; E3                 ; Untyped                          ;
+; EXTCLK2_COUNTER               ; E2                 ; Untyped                          ;
+; EXTCLK1_COUNTER               ; E1                 ; Untyped                          ;
+; EXTCLK0_COUNTER               ; E0                 ; Untyped                          ;
+; ENABLE0_COUNTER               ; L0                 ; Untyped                          ;
+; ENABLE1_COUNTER               ; L0                 ; Untyped                          ;
+; CHARGE_PUMP_CURRENT           ; 2                  ; Untyped                          ;
+; LOOP_FILTER_R                 ;  1.000000          ; Untyped                          ;
+; LOOP_FILTER_C                 ; 5                  ; Untyped                          ;
+; CHARGE_PUMP_CURRENT_BITS      ; 9999               ; Untyped                          ;
+; LOOP_FILTER_R_BITS            ; 9999               ; Untyped                          ;
+; LOOP_FILTER_C_BITS            ; 9999               ; Untyped                          ;
+; VCO_POST_SCALE                ; 0                  ; Untyped                          ;
+; CLK2_OUTPUT_FREQUENCY         ; 0                  ; Untyped                          ;
+; CLK1_OUTPUT_FREQUENCY         ; 0                  ; Untyped                          ;
+; CLK0_OUTPUT_FREQUENCY         ; 0                  ; Untyped                          ;
+; INTENDED_DEVICE_FAMILY        ; Cyclone II         ; Untyped                          ;
+; PORT_CLKENA0                  ; PORT_UNUSED        ; Untyped                          ;
+; PORT_CLKENA1                  ; PORT_UNUSED        ; Untyped                          ;
+; PORT_CLKENA2                  ; PORT_UNUSED        ; Untyped                          ;
+; PORT_CLKENA3                  ; PORT_UNUSED        ; Untyped                          ;
+; PORT_CLKENA4                  ; PORT_UNUSED        ; Untyped                          ;
+; PORT_CLKENA5                  ; PORT_UNUSED        ; Untyped                          ;
+; PORT_EXTCLKENA0               ; PORT_CONNECTIVITY  ; Untyped                          ;
+; PORT_EXTCLKENA1               ; PORT_CONNECTIVITY  ; Untyped                          ;
+; PORT_EXTCLKENA2               ; PORT_CONNECTIVITY  ; Untyped                          ;
+; PORT_EXTCLKENA3               ; PORT_CONNECTIVITY  ; Untyped                          ;
+; PORT_EXTCLK0                  ; PORT_UNUSED        ; Untyped                          ;
+; PORT_EXTCLK1                  ; PORT_UNUSED        ; Untyped                          ;
+; PORT_EXTCLK2                  ; PORT_UNUSED        ; Untyped                          ;
+; PORT_EXTCLK3                  ; PORT_UNUSED        ; Untyped                          ;
+; PORT_CLKBAD0                  ; PORT_UNUSED        ; Untyped                          ;
+; PORT_CLKBAD1                  ; PORT_UNUSED        ; Untyped                          ;
+; PORT_CLK0                     ; PORT_USED          ; Untyped                          ;
+; PORT_CLK1                     ; PORT_USED          ; Untyped                          ;
+; PORT_CLK2                     ; PORT_USED          ; Untyped                          ;
+; PORT_CLK3                     ; PORT_UNUSED        ; Untyped                          ;
+; PORT_CLK4                     ; PORT_UNUSED        ; Untyped                          ;
+; PORT_CLK5                     ; PORT_UNUSED        ; Untyped                          ;
+; PORT_CLK6                     ; PORT_UNUSED        ; Untyped                          ;
+; PORT_CLK7                     ; PORT_UNUSED        ; Untyped                          ;
+; PORT_CLK8                     ; PORT_UNUSED        ; Untyped                          ;
+; PORT_CLK9                     ; PORT_UNUSED        ; Untyped                          ;
+; PORT_SCANDATA                 ; PORT_UNUSED        ; Untyped                          ;
+; PORT_SCANDATAOUT              ; PORT_UNUSED        ; Untyped                          ;
+; PORT_SCANDONE                 ; PORT_UNUSED        ; Untyped                          ;
+; PORT_SCLKOUT1                 ; PORT_CONNECTIVITY  ; Untyped                          ;
+; PORT_SCLKOUT0                 ; PORT_CONNECTIVITY  ; Untyped                          ;
+; PORT_ACTIVECLOCK              ; PORT_UNUSED        ; Untyped                          ;
+; PORT_CLKLOSS                  ; PORT_UNUSED        ; Untyped                          ;
+; PORT_INCLK1                   ; PORT_UNUSED        ; Untyped                          ;
+; PORT_INCLK0                   ; PORT_USED          ; Untyped                          ;
+; PORT_FBIN                     ; PORT_UNUSED        ; Untyped                          ;
+; PORT_PLLENA                   ; PORT_UNUSED        ; Untyped                          ;
+; PORT_CLKSWITCH                ; PORT_UNUSED        ; Untyped                          ;
+; PORT_ARESET                   ; PORT_USED          ; Untyped                          ;
+; PORT_PFDENA                   ; PORT_UNUSED        ; Untyped                          ;
+; PORT_SCANCLK                  ; PORT_UNUSED        ; Untyped                          ;
+; PORT_SCANACLR                 ; PORT_UNUSED        ; Untyped                          ;
+; PORT_SCANREAD                 ; PORT_UNUSED        ; Untyped                          ;
+; PORT_SCANWRITE                ; PORT_UNUSED        ; Untyped                          ;
+; PORT_ENABLE0                  ; PORT_CONNECTIVITY  ; Untyped                          ;
+; PORT_ENABLE1                  ; PORT_CONNECTIVITY  ; Untyped                          ;
+; PORT_LOCKED                   ; PORT_UNUSED        ; Untyped                          ;
+; PORT_CONFIGUPDATE             ; PORT_UNUSED        ; Untyped                          ;
+; PORT_FBOUT                    ; PORT_CONNECTIVITY  ; Untyped                          ;
+; PORT_PHASEDONE                ; PORT_UNUSED        ; Untyped                          ;
+; PORT_PHASESTEP                ; PORT_UNUSED        ; Untyped                          ;
+; PORT_PHASEUPDOWN              ; PORT_UNUSED        ; Untyped                          ;
+; PORT_SCANCLKENA               ; PORT_UNUSED        ; Untyped                          ;
+; PORT_PHASECOUNTERSELECT       ; PORT_UNUSED        ; Untyped                          ;
+; PORT_VCOOVERRANGE             ; PORT_CONNECTIVITY  ; Untyped                          ;
+; PORT_VCOUNDERRANGE            ; PORT_CONNECTIVITY  ; Untyped                          ;
+; M_TEST_SOURCE                 ; 5                  ; Untyped                          ;
+; C0_TEST_SOURCE                ; 5                  ; Untyped                          ;
+; C1_TEST_SOURCE                ; 5                  ; Untyped                          ;
+; C2_TEST_SOURCE                ; 5                  ; Untyped                          ;
+; C3_TEST_SOURCE                ; 5                  ; Untyped                          ;
+; C4_TEST_SOURCE                ; 5                  ; Untyped                          ;
+; C5_TEST_SOURCE                ; 5                  ; Untyped                          ;
+; C6_TEST_SOURCE                ; 5                  ; Untyped                          ;
+; C7_TEST_SOURCE                ; 5                  ; Untyped                          ;
+; C8_TEST_SOURCE                ; 5                  ; Untyped                          ;
+; C9_TEST_SOURCE                ; 5                  ; Untyped                          ;
+; CBXI_PARAMETER                ; NOTHING            ; Untyped                          ;
+; VCO_FREQUENCY_CONTROL         ; AUTO               ; Untyped                          ;
+; VCO_PHASE_SHIFT_STEP          ; 0                  ; Untyped                          ;
+; WIDTH_CLOCK                   ; 6                  ; Untyped                          ;
+; WIDTH_PHASECOUNTERSELECT      ; 4                  ; Untyped                          ;
+; USING_FBMIMICBIDIR_PORT       ; OFF                ; Untyped                          ;
+; DEVICE_FAMILY                 ; Cyclone II         ; Untyped                          ;
+; SCAN_CHAIN_MIF_FILE           ; UNUSED             ; Untyped                          ;
+; SIM_GATE_LOCK_DEVICE_BEHAVIOR ; OFF                ; Untyped                          ;
+; AUTO_CARRY_CHAINS             ; ON                 ; AUTO_CARRY                       ;
+; IGNORE_CARRY_BUFFERS          ; OFF                ; IGNORE_CARRY                     ;
+; AUTO_CASCADE_CHAINS           ; ON                 ; AUTO_CASCADE                     ;
+; IGNORE_CASCADE_BUFFERS        ; OFF                ; IGNORE_CASCADE                   ;
++-------------------------------+--------------------+----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: VGA_Controller:u1 ;
++----------------+-------+---------------------------------------+
+; Parameter Name ; Value ; Type                                  ;
++----------------+-------+---------------------------------------+
+; H_SYNC_CYC     ; 96    ; Signed Integer                        ;
+; H_SYNC_BACK    ; 48    ; Signed Integer                        ;
+; H_SYNC_ACT     ; 640   ; Signed Integer                        ;
+; H_SYNC_FRONT   ; 16    ; Signed Integer                        ;
+; H_SYNC_TOTAL   ; 800   ; Signed Integer                        ;
+; V_SYNC_CYC     ; 2     ; Signed Integer                        ;
+; V_SYNC_BACK    ; 31    ; Signed Integer                        ;
+; V_SYNC_ACT     ; 480   ; Signed Integer                        ;
+; V_SYNC_FRONT   ; 11    ; Signed Integer                        ;
+; V_SYNC_TOTAL   ; 524   ; Signed Integer                        ;
+; X_START        ; 144   ; Signed Integer                        ;
+; Y_START        ; 33    ; Signed Integer                        ;
++----------------+-------+---------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ps2_keyboard:u3 ;
++-----------------------------+-------+------------------------+
+; Parameter Name              ; Value ; Type                   ;
++-----------------------------+-------+------------------------+
+; TIMER_60USEC_VALUE_PP       ; 2950  ; Signed Integer         ;
+; TIMER_60USEC_BITS_PP        ; 12    ; Signed Integer         ;
+; TIMER_5USEC_VALUE_PP        ; 186   ; Signed Integer         ;
+; TIMER_5USEC_BITS_PP         ; 8     ; Signed Integer         ;
+; TRAP_SHIFT_KEYS_PP          ; 0     ; Signed Integer         ;
+; m1_rx_clk_h                 ; 1     ; Signed Integer         ;
+; m1_rx_clk_l                 ; 0     ; Signed Integer         ;
+; m1_rx_falling_edge_marker   ; 13    ; Signed Integer         ;
+; m1_rx_rising_edge_marker    ; 14    ; Signed Integer         ;
+; m1_tx_force_clk_l           ; 3     ; Signed Integer         ;
+; m1_tx_first_wait_clk_h      ; 10    ; Signed Integer         ;
+; m1_tx_first_wait_clk_l      ; 11    ; Signed Integer         ;
+; m1_tx_reset_timer           ; 12    ; Signed Integer         ;
+; m1_tx_wait_clk_h            ; 2     ; Signed Integer         ;
+; m1_tx_clk_h                 ; 4     ; Signed Integer         ;
+; m1_tx_clk_l                 ; 5     ; Signed Integer         ;
+; m1_tx_wait_keyboard_ack     ; 6     ; Signed Integer         ;
+; m1_tx_done_recovery         ; 7     ; Signed Integer         ;
+; m1_tx_error_no_keyboard_ack ; 8     ; Signed Integer         ;
+; m1_tx_rising_edge_marker    ; 9     ; Signed Integer         ;
+; m2_rx_data_ready            ; 1     ; Signed Integer         ;
+; m2_rx_data_ready_ack        ; 0     ; Signed Integer         ;
++-----------------------------+-------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------+
+; Parameter Settings for User Entity Instance: AUDIO_DAC:u4 ;
++------------------+----------+-----------------------------+
+; Parameter Name   ; Value    ; Type                        ;
++------------------+----------+-----------------------------+
+; REF_CLK          ; 18432000 ; Signed Integer              ;
+; SAMPLE_RATE      ; 48000    ; Signed Integer              ;
+; DATA_WIDTH       ; 16       ; Signed Integer              ;
+; CHANNEL_NUM      ; 2        ; Signed Integer              ;
+; SIN_SAMPLE_DATA  ; 48       ; Signed Integer              ;
+; FLASH_DATA_NUM   ; 1048576  ; Signed Integer              ;
+; SDRAM_DATA_NUM   ; 4194304  ; Signed Integer              ;
+; SRAM_DATA_NUM    ; 262144   ; Signed Integer              ;
+; FLASH_ADDR_WIDTH ; 20       ; Signed Integer              ;
+; SDRAM_ADDR_WIDTH ; 22       ; Signed Integer              ;
+; SRAM_ADDR_WIDTH  ; 18       ; Signed Integer              ;
+; FLASH_DATA_WIDTH ; 8        ; Signed Integer              ;
+; SDRAM_DATA_WIDTH ; 16       ; Signed Integer              ;
+; SRAM_DATA_WIDTH  ; 16       ; Signed Integer              ;
+; FLASH_DATA       ; 0        ; Signed Integer              ;
+; SIN_SANPLE       ; 1        ; Signed Integer              ;
+; SDRAM_DATA       ; 2        ; Signed Integer              ;
+; SRAM_DATA        ; 3        ; Signed Integer              ;
++------------------+----------+-----------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LCD_TEST:u5 ;
++----------------+-------+---------------------------------+
+; Parameter Name ; Value ; Type                            ;
++----------------+-------+---------------------------------+
+; LCD_INTIAL     ; 0     ; Signed Integer                  ;
+; LCD_LINE1      ; 5     ; Signed Integer                  ;
+; LCD_CH_LINE    ; 21    ; Signed Integer                  ;
+; LCD_LINE2      ; 22    ; Signed Integer                  ;
+; LUT_SIZE       ; 38    ; Signed Integer                  ;
++----------------+-------+---------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LCD_TEST:u5|LCD_Controller:u0 ;
++----------------+-------+---------------------------------------------------+
+; Parameter Name ; Value ; Type                                              ;
++----------------+-------+---------------------------------------------------+
+; CLK_Divide     ; 16    ; Signed Integer                                    ;
++----------------+-------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: BrickBreaker:u6|Lives_Counter:l1 ;
++----------------+----------+---------------------------------------------------+
+; Parameter Name ; Value    ; Type                                              ;
++----------------+----------+---------------------------------------------------+
+; START_LIVES    ; 00000011 ; Unsigned Binary                                   ;
++----------------+----------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------+
+; altpll Parameter Settings by Entity Instance                             ;
++-------------------------------+------------------------------------------+
+; Name                          ; Value                                    ;
++-------------------------------+------------------------------------------+
+; Number of entity instances    ; 1                                        ;
+; Entity Instance               ; VGA_Audio_PLL:p1|altpll:altpll_component ;
+;     -- OPERATION_MODE         ; SOURCE_SYNCHRONOUS                       ;
+;     -- PLL_TYPE               ; AUTO                                     ;
+;     -- PRIMARY_CLOCK          ; INCLK0                                   ;
+;     -- INCLK0_INPUT_FREQUENCY ; 37037                                    ;
+;     -- INCLK1_INPUT_FREQUENCY ; 0                                        ;
+;     -- VCO_MULTIPLY_BY        ; 0                                        ;
+;     -- VCO_DIVIDE_BY          ; 0                                        ;
++-------------------------------+------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "BrickBreaker:u6|Bricks_Left:b3|BCD:bcd1"                                                                                                                                                  ;
++--------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port         ; Type  ; Severity ; Details                                                                                                                                                                            ;
++--------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; iScore       ; Input ; Warning  ; Input port expression (11 bits) is wider than the input port (10 bits) it drives.  The 1 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; iScore[9..8] ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
++--------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "BrickBreaker:u6"                                                                                       ;
++-------------------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port                    ; Type   ; Severity ; Details                                                                             ;
++-------------------------+--------+----------+-------------------------------------------------------------------------------------+
+; Bricks_Left_7SEG[15..8] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------------------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "AUDIO_DAC:u4"                                                                                                                                              ;
++-------------+--------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port        ; Type   ; Severity ; Details                                                                                                                                             ;
++-------------+--------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
+; iSrc_Select ; Input  ; Warning  ; Input port expression (1 bits) is smaller than the input port (2 bits) it drives.  Extra input bit(s) "iSrc_Select[1..1]" will be connected to GND. ;
+; oFLASH_ADDR ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                            ;
+; iFLASH_DATA ; Input  ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND.        ;
+; oSDRAM_ADDR ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                            ;
+; iSDRAM_DATA ; Input  ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND.        ;
+; oSRAM_ADDR  ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                            ;
+; iSRAM_DATA  ; Input  ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND.        ;
++-------------+--------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "ps2_keyboard:u3"                                                                                                                                                 ;
++--------------------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port                     ; Type   ; Severity ; Details                                                                                                                                      ;
++--------------------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; ps2_clk_en_o_            ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                     ;
+; ps2_data_en_o_           ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                     ;
+; rx_extended              ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                     ;
+; rx_released              ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                     ;
+; rx_shift_key_on          ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                     ;
+; rx_scan_code             ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                     ;
+; tx_data                  ; Input  ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
+; tx_write                 ; Input  ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
+; tx_write_ack_o           ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                     ;
+; tx_error_no_keyboard_ack ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                     ;
+; translate                ; Input  ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
++--------------------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "VGA_Controller:u1"                                                                                                                                           ;
++----------------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port                 ; Type   ; Severity ; Details                                                                                                                                      ;
++----------------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; iCursor_RGB_EN[2..0] ; Input  ; Info     ; Stuck at VCC                                                                                                                                 ;
+; iCursor_RGB_EN[3]    ; Input  ; Info     ; Stuck at GND                                                                                                                                 ;
+; iCursor_X            ; Input  ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
+; iCursor_Y            ; Input  ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
+; iCursor_R            ; Input  ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
+; iCursor_G            ; Input  ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
+; iCursor_B            ; Input  ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
+; oAddress             ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                     ;
+; oVGA_CLOCK           ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                     ;
++----------------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:15     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Analysis & Synthesis
+    Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+    Info: Processing started: Mon Dec 01 13:38:45 2014
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off BrickBreaker_2 -c BrickBreaker_2
+Critical Warning (138069): Setting INCREMENTAL_COMPILATION to "OFF" is no longer supported. Assignment is ignored. To disable partitions, set the IGNORE_PARTITIONS global assignment to "ON" instead.
+Info (12021): Found 1 design units, including 1 entities, in source file brickbreaker_2.v
+    Info (12023): Found entity 1: BrickBreaker_2
+Info (12021): Found 1 design units, including 1 entities, in source file brickbreaker/scorekeeper.v
+    Info (12023): Found entity 1: ScoreKeeper
+Info (12021): Found 1 design units, including 1 entities, in source file brickbreaker/paddle_control.v
+    Info (12023): Found entity 1: Paddle_Control
+Warning (10238): Verilog Module Declaration warning at Lives_LEDs.v(4): ignored anonymous port(s) indicated by duplicate or dangling comma(s) in the port list for module "Lives_LEDs"
+Info (12021): Found 1 design units, including 1 entities, in source file brickbreaker/lives_leds.v
+    Info (12023): Found entity 1: Lives_LEDs
+Info (12021): Found 1 design units, including 1 entities, in source file brickbreaker/lives_counter.v
+    Info (12023): Found entity 1: Lives_Counter
+Info (12021): Found 1 design units, including 1 entities, in source file brickbreaker/bricks_left.v
+    Info (12023): Found entity 1: Bricks_Left
+Info (12021): Found 1 design units, including 1 entities, in source file brickbreaker/bricks.v
+    Info (12023): Found entity 1: Bricks
+Warning (10275): Verilog HDL Module Instantiation warning at BrickBreaker.v(108): ignored dangling comma in List of Port Connections
+Warning (10229): Verilog HDL Expression warning at BrickBreaker.v(160): truncated literal to match 10 bits
+Warning (10229): Verilog HDL Expression warning at BrickBreaker.v(161): truncated literal to match 10 bits
+Warning (10229): Verilog HDL Expression warning at BrickBreaker.v(162): truncated literal to match 10 bits
+Warning (10229): Verilog HDL Expression warning at BrickBreaker.v(168): truncated literal to match 10 bits
+Warning (10229): Verilog HDL Expression warning at BrickBreaker.v(174): truncated literal to match 10 bits
+Warning (10229): Verilog HDL Expression warning at BrickBreaker.v(175): truncated literal to match 10 bits
+Warning (10229): Verilog HDL Expression warning at BrickBreaker.v(176): truncated literal to match 10 bits
+Warning (10229): Verilog HDL Expression warning at BrickBreaker.v(195): truncated literal to match 10 bits
+Warning (10229): Verilog HDL Expression warning at BrickBreaker.v(196): truncated literal to match 10 bits
+Warning (10229): Verilog HDL Expression warning at BrickBreaker.v(197): truncated literal to match 10 bits
+Warning (10229): Verilog HDL Expression warning at BrickBreaker.v(216): truncated literal to match 10 bits
+Warning (10229): Verilog HDL Expression warning at BrickBreaker.v(217): truncated literal to match 10 bits
+Warning (10229): Verilog HDL Expression warning at BrickBreaker.v(218): truncated literal to match 10 bits
+Warning (10229): Verilog HDL Expression warning at BrickBreaker.v(230): truncated literal to match 10 bits
+Warning (10229): Verilog HDL Expression warning at BrickBreaker.v(236): truncated literal to match 10 bits
+Warning (10229): Verilog HDL Expression warning at BrickBreaker.v(242): truncated literal to match 10 bits
+Warning (10229): Verilog HDL Expression warning at BrickBreaker.v(243): truncated literal to match 10 bits
+Warning (10229): Verilog HDL Expression warning at BrickBreaker.v(249): truncated literal to match 10 bits
+Warning (10229): Verilog HDL Expression warning at BrickBreaker.v(256): truncated literal to match 10 bits
+Warning (10229): Verilog HDL Expression warning at BrickBreaker.v(268): truncated literal to match 10 bits
+Warning (10229): Verilog HDL Expression warning at BrickBreaker.v(275): truncated literal to match 10 bits
+Warning (10229): Verilog HDL Expression warning at BrickBreaker.v(276): truncated literal to match 10 bits
+Warning (10229): Verilog HDL Expression warning at BrickBreaker.v(277): truncated literal to match 10 bits
+Info (12021): Found 1 design units, including 1 entities, in source file brickbreaker/brickbreaker.v
+    Info (12023): Found entity 1: BrickBreaker
+Info (12021): Found 1 design units, including 1 entities, in source file brickbreaker/bcd.v
+    Info (12023): Found entity 1: BCD
+Info (12021): Found 1 design units, including 1 entities, in source file brickbreaker/ball_movement.v
+    Info (12023): Found entity 1: Ball_Movement
+Info (12021): Found 1 design units, including 1 entities, in source file samples/vga_controller.v
+    Info (12023): Found entity 1: VGA_Controller
+Info (12021): Found 1 design units, including 1 entities, in source file samples/vga_audio_pll.v
+    Info (12023): Found entity 1: VGA_Audio_PLL
+Info (12021): Found 1 design units, including 1 entities, in source file samples/seg7_lut_8.v
+    Info (12023): Found entity 1: SEG7_LUT_8
+Info (12021): Found 1 design units, including 1 entities, in source file samples/seg7_lut.v
+    Info (12023): Found entity 1: SEG7_LUT
+Info (12021): Found 1 design units, including 1 entities, in source file samples/reset_delay.v
+    Info (12023): Found entity 1: Reset_Delay
+Info (12021): Found 1 design units, including 1 entities, in source file samples/ps2_keyboard.v
+    Info (12023): Found entity 1: ps2_keyboard
+Info (12021): Found 1 design units, including 1 entities, in source file samples/lcd_test.v
+    Info (12023): Found entity 1: LCD_TEST
+Info (12021): Found 1 design units, including 1 entities, in source file samples/lcd_controller.v
+    Info (12023): Found entity 1: LCD_Controller
+Info (12021): Found 1 design units, including 1 entities, in source file samples/audio_dac.v
+    Info (12023): Found entity 1: AUDIO_DAC
+Info (12127): Elaborating entity "BrickBreaker_2" for the top level hierarchy
+Warning (10230): Verilog HDL assignment warning at BrickBreaker_2.v(165): truncated value with size 24 to match size of target (18)
+Info (12128): Elaborating entity "Reset_Delay" for hierarchy "Reset_Delay:r0"
+Warning (10230): Verilog HDL assignment warning at Reset_Delay.v(10): truncated value with size 32 to match size of target (20)
+Info (12128): Elaborating entity "VGA_Audio_PLL" for hierarchy "VGA_Audio_PLL:p1"
+Info (12128): Elaborating entity "altpll" for hierarchy "VGA_Audio_PLL:p1|altpll:altpll_component"
+Warning (287013): Variable or input pin "configupdate" is defined but never used.
+Info (12130): Elaborated megafunction instantiation "VGA_Audio_PLL:p1|altpll:altpll_component"
+Info (12133): Instantiated megafunction "VGA_Audio_PLL:p1|altpll:altpll_component" with the following parameter:
+    Info (12134): Parameter "clk0_divide_by" = "15"
+    Info (12134): Parameter "clk0_duty_cycle" = "50"
+    Info (12134): Parameter "clk0_multiply_by" = "14"
+    Info (12134): Parameter "clk0_phase_shift" = "0"
+    Info (12134): Parameter "clk1_divide_by" = "3"
+    Info (12134): Parameter "clk1_duty_cycle" = "50"
+    Info (12134): Parameter "clk1_multiply_by" = "2"
+    Info (12134): Parameter "clk1_phase_shift" = "0"
+    Info (12134): Parameter "clk2_divide_by" = "15"
+    Info (12134): Parameter "clk2_duty_cycle" = "50"
+    Info (12134): Parameter "clk2_multiply_by" = "14"
+    Info (12134): Parameter "clk2_phase_shift" = "-9921"
+    Info (12134): Parameter "compensate_clock" = "CLK0"
+    Info (12134): Parameter "inclk0_input_frequency" = "37037"
+    Info (12134): Parameter "intended_device_family" = "Cyclone II"
+    Info (12134): Parameter "lpm_type" = "altpll"
+    Info (12134): Parameter "operation_mode" = "SOURCE_SYNCHRONOUS"
+    Info (12134): Parameter "port_activeclock" = "PORT_UNUSED"
+    Info (12134): Parameter "port_areset" = "PORT_USED"
+    Info (12134): Parameter "port_clkbad0" = "PORT_UNUSED"
+    Info (12134): Parameter "port_clkbad1" = "PORT_UNUSED"
+    Info (12134): Parameter "port_clkloss" = "PORT_UNUSED"
+    Info (12134): Parameter "port_clkswitch" = "PORT_UNUSED"
+    Info (12134): Parameter "port_configupdate" = "PORT_UNUSED"
+    Info (12134): Parameter "port_fbin" = "PORT_UNUSED"
+    Info (12134): Parameter "port_inclk0" = "PORT_USED"
+    Info (12134): Parameter "port_inclk1" = "PORT_UNUSED"
+    Info (12134): Parameter "port_locked" = "PORT_UNUSED"
+    Info (12134): Parameter "port_pfdena" = "PORT_UNUSED"
+    Info (12134): Parameter "port_phasecounterselect" = "PORT_UNUSED"
+    Info (12134): Parameter "port_phasedone" = "PORT_UNUSED"
+    Info (12134): Parameter "port_phasestep" = "PORT_UNUSED"
+    Info (12134): Parameter "port_phaseupdown" = "PORT_UNUSED"
+    Info (12134): Parameter "port_pllena" = "PORT_UNUSED"
+    Info (12134): Parameter "port_scanaclr" = "PORT_UNUSED"
+    Info (12134): Parameter "port_scanclk" = "PORT_UNUSED"
+    Info (12134): Parameter "port_scanclkena" = "PORT_UNUSED"
+    Info (12134): Parameter "port_scandata" = "PORT_UNUSED"
+    Info (12134): Parameter "port_scandataout" = "PORT_UNUSED"
+    Info (12134): Parameter "port_scandone" = "PORT_UNUSED"
+    Info (12134): Parameter "port_scanread" = "PORT_UNUSED"
+    Info (12134): Parameter "port_scanwrite" = "PORT_UNUSED"
+    Info (12134): Parameter "port_clk0" = "PORT_USED"
+    Info (12134): Parameter "port_clk1" = "PORT_USED"
+    Info (12134): Parameter "port_clk2" = "PORT_USED"
+    Info (12134): Parameter "port_clk3" = "PORT_UNUSED"
+    Info (12134): Parameter "port_clk4" = "PORT_UNUSED"
+    Info (12134): Parameter "port_clk5" = "PORT_UNUSED"
+    Info (12134): Parameter "port_clkena0" = "PORT_UNUSED"
+    Info (12134): Parameter "port_clkena1" = "PORT_UNUSED"
+    Info (12134): Parameter "port_clkena2" = "PORT_UNUSED"
+    Info (12134): Parameter "port_clkena3" = "PORT_UNUSED"
+    Info (12134): Parameter "port_clkena4" = "PORT_UNUSED"
+    Info (12134): Parameter "port_clkena5" = "PORT_UNUSED"
+    Info (12134): Parameter "port_extclk0" = "PORT_UNUSED"
+    Info (12134): Parameter "port_extclk1" = "PORT_UNUSED"
+    Info (12134): Parameter "port_extclk2" = "PORT_UNUSED"
+    Info (12134): Parameter "port_extclk3" = "PORT_UNUSED"
+Info (12128): Elaborating entity "SEG7_LUT_8" for hierarchy "SEG7_LUT_8:u0"
+Info (12128): Elaborating entity "SEG7_LUT" for hierarchy "SEG7_LUT_8:u0|SEG7_LUT:u0"
+Info (12128): Elaborating entity "VGA_Controller" for hierarchy "VGA_Controller:u1"
+Warning (10230): Verilog HDL assignment warning at VGA_Controller.v(101): truncated value with size 32 to match size of target (10)
+Warning (10230): Verilog HDL assignment warning at VGA_Controller.v(102): truncated value with size 32 to match size of target (10)
+Warning (10230): Verilog HDL assignment warning at VGA_Controller.v(103): truncated value with size 32 to match size of target (20)
+Warning (10230): Verilog HDL assignment warning at VGA_Controller.v(164): truncated value with size 32 to match size of target (10)
+Warning (10230): Verilog HDL assignment warning at VGA_Controller.v(193): truncated value with size 32 to match size of target (10)
+Warning (10230): Verilog HDL assignment warning at VGA_Controller.v(212): truncated value with size 32 to match size of target (10)
+Warning (10230): Verilog HDL assignment warning at VGA_Controller.v(215): truncated value with size 32 to match size of target (10)
+Warning (10230): Verilog HDL assignment warning at VGA_Controller.v(218): truncated value with size 32 to match size of target (10)
+Info (12128): Elaborating entity "ps2_keyboard" for hierarchy "ps2_keyboard:u3"
+Warning (10230): Verilog HDL assignment warning at ps2_keyboard.v(310): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at ps2_keyboard.v(321): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at ps2_keyboard.v(322): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at ps2_keyboard.v(327): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at ps2_keyboard.v(328): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at ps2_keyboard.v(330): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at ps2_keyboard.v(348): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at ps2_keyboard.v(377): truncated value with size 32 to match size of target (12)
+Warning (10230): Verilog HDL assignment warning at ps2_keyboard.v(385): truncated value with size 32 to match size of target (8)
+Info (12128): Elaborating entity "AUDIO_DAC" for hierarchy "AUDIO_DAC:u4"
+Warning (10230): Verilog HDL assignment warning at AUDIO_DAC.v(92): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at AUDIO_DAC.v(117): truncated value with size 32 to match size of target (9)
+Warning (10230): Verilog HDL assignment warning at AUDIO_DAC.v(125): truncated value with size 32 to match size of target (8)
+Warning (10230): Verilog HDL assignment warning at AUDIO_DAC.v(133): truncated value with size 32 to match size of target (7)
+Warning (10230): Verilog HDL assignment warning at AUDIO_DAC.v(146): truncated value with size 32 to match size of target (6)
+Warning (10230): Verilog HDL assignment warning at AUDIO_DAC.v(160): truncated value with size 32 to match size of target (20)
+Warning (10230): Verilog HDL assignment warning at AUDIO_DAC.v(196): truncated value with size 32 to match size of target (22)
+Warning (10230): Verilog HDL assignment warning at AUDIO_DAC.v(227): truncated value with size 32 to match size of target (18)
+Warning (10230): Verilog HDL assignment warning at AUDIO_DAC.v(256): truncated value with size 32 to match size of target (4)
+Info (12128): Elaborating entity "LCD_TEST" for hierarchy "LCD_TEST:u5"
+Warning (10230): Verilog HDL assignment warning at LCD_TEST.v(57): truncated value with size 32 to match size of target (18)
+Warning (10230): Verilog HDL assignment warning at LCD_TEST.v(65): truncated value with size 32 to match size of target (6)
+Info (12128): Elaborating entity "LCD_Controller" for hierarchy "LCD_TEST:u5|LCD_Controller:u0"
+Warning (10230): Verilog HDL assignment warning at LCD_Controller.v(66): truncated value with size 32 to match size of target (5)
+Info (12128): Elaborating entity "BrickBreaker" for hierarchy "BrickBreaker:u6"
+Info (12128): Elaborating entity "Paddle_Control" for hierarchy "BrickBreaker:u6|Paddle_Control:p1"
+Warning (10230): Verilog HDL assignment warning at Paddle_Control.v(36): truncated value with size 32 to match size of target (26)
+Warning (10230): Verilog HDL assignment warning at Paddle_Control.v(38): truncated value with size 32 to match size of target (10)
+Warning (10230): Verilog HDL assignment warning at Paddle_Control.v(39): truncated value with size 32 to match size of target (10)
+Warning (10230): Verilog HDL assignment warning at Paddle_Control.v(47): truncated value with size 32 to match size of target (10)
+Warning (10230): Verilog HDL assignment warning at Paddle_Control.v(53): truncated value with size 32 to match size of target (10)
+Warning (10230): Verilog HDL assignment warning at Paddle_Control.v(61): truncated value with size 32 to match size of target (10)
+Info (12128): Elaborating entity "Ball_Movement" for hierarchy "BrickBreaker:u6|Ball_Movement:b1"
+Warning (10230): Verilog HDL assignment warning at Ball_Movement.v(71): truncated value with size 32 to match size of target (26)
+Warning (10230): Verilog HDL assignment warning at Ball_Movement.v(87): truncated value with size 32 to match size of target (10)
+Warning (10230): Verilog HDL assignment warning at Ball_Movement.v(89): truncated value with size 32 to match size of target (10)
+Warning (10230): Verilog HDL assignment warning at Ball_Movement.v(92): truncated value with size 32 to match size of target (10)
+Warning (10230): Verilog HDL assignment warning at Ball_Movement.v(94): truncated value with size 32 to match size of target (10)
+Warning (10230): Verilog HDL assignment warning at Ball_Movement.v(97): truncated value with size 32 to match size of target (9)
+Warning (10230): Verilog HDL assignment warning at Ball_Movement.v(99): truncated value with size 32 to match size of target (9)
+Warning (10230): Verilog HDL assignment warning at Ball_Movement.v(102): truncated value with size 32 to match size of target (9)
+Warning (10230): Verilog HDL assignment warning at Ball_Movement.v(104): truncated value with size 32 to match size of target (9)
+Info (12128): Elaborating entity "Bricks" for hierarchy "BrickBreaker:u6|Bricks:b2"
+Warning (10230): Verilog HDL assignment warning at Bricks.v(55): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(56): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(57): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(58): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(59): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(60): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(61): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(62): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(63): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(64): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(65): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(66): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(67): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(68): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(71): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(72): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(73): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(74): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(75): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(76): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(77): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(78): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(79): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(80): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(81): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(82): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(83): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(84): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(87): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(88): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(89): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(90): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(91): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(92): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(93): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(94): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(95): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(96): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(97): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(98): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(99): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(100): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(103): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(104): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(105): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(106): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(107): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(108): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(109): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(110): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(111): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(112): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(113): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(114): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(115): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(116): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(119): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(120): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(121): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(122): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(123): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(124): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(125): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(126): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(127): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(128): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(129): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(130): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(131): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(132): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(135): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(136): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(137): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(138): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(139): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(140): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(141): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(142): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(143): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(144): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(145): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(146): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(147): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(148): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(151): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(152): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(153): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(154): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(155): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(156): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(157): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(158): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(159): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(160): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(161): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(162): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(163): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(164): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(167): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(168): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(169): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(170): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(171): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(172): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(173): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(174): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(175): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(176): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(177): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(178): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(179): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(180): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(183): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(184): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(185): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(186): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(187): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(188): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(189): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(190): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(191): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(192): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(193): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(194): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(195): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(196): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(199): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(200): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(201): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(202): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(203): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(204): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(205): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(206): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(207): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(208): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(209): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(210): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(211): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Bricks.v(212): truncated value with size 32 to match size of target (1)
+Info (12128): Elaborating entity "Lives_Counter" for hierarchy "BrickBreaker:u6|Lives_Counter:l1"
+Warning (10230): Verilog HDL assignment warning at Lives_Counter.v(28): truncated value with size 32 to match size of target (8)
+Warning (10230): Verilog HDL assignment warning at Lives_Counter.v(32): truncated value with size 32 to match size of target (8)
+Info (12128): Elaborating entity "Lives_LEDs" for hierarchy "BrickBreaker:u6|Lives_LEDs:l2"
+Info (12128): Elaborating entity "ScoreKeeper" for hierarchy "BrickBreaker:u6|ScoreKeeper:s1"
+Warning (10230): Verilog HDL assignment warning at ScoreKeeper.v(23): truncated value with size 32 to match size of target (10)
+Warning (10230): Verilog HDL assignment warning at ScoreKeeper.v(24): truncated value with size 32 to match size of target (10)
+Warning (10230): Verilog HDL assignment warning at ScoreKeeper.v(25): truncated value with size 32 to match size of target (10)
+Warning (10230): Verilog HDL assignment warning at ScoreKeeper.v(26): truncated value with size 32 to match size of target (10)
+Warning (10230): Verilog HDL assignment warning at ScoreKeeper.v(27): truncated value with size 32 to match size of target (10)
+Info (12128): Elaborating entity "BCD" for hierarchy "BrickBreaker:u6|ScoreKeeper:s1|BCD:bcd2"
+Warning (10230): Verilog HDL assignment warning at BCD.v(30): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at BCD.v(28): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at BCD.v(26): truncated value with size 32 to match size of target (4)
+Info (12128): Elaborating entity "Bricks_Left" for hierarchy "BrickBreaker:u6|Bricks_Left:b3"
+Warning (10230): Verilog HDL assignment warning at Bricks_Left.v(16): truncated value with size 32 to match size of target (8)
+Warning (12241): 4 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (13034): The following nodes have both tri-state and non-tri-state drivers
+    Warning (13035): Inserted always-enabled tri-state buffer between "LCD_DATA[0]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "LCD_DATA[1]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "LCD_DATA[2]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "LCD_DATA[3]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "LCD_DATA[4]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "LCD_DATA[5]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "LCD_DATA[6]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "LCD_DATA[7]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "AUD_DACLRCK" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "AUD_BCLK" and its non-tri-state driver.
+Info (13060): One or more bidirs are fed by always enabled tri-state buffers
+    Info (13061): Fan-out of permanently enabled tri-state buffer feeding bidir "AUD_DACLRCK" is moved to its source
+Info (13000): Registers with preset signals will power-up high
+Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+Warning (13009): TRI or OPNDRN buffers permanently enabled
+    Warning (13010): Node "LCD_DATA[0]~synth"
+    Warning (13010): Node "LCD_DATA[1]~synth"
+    Warning (13010): Node "LCD_DATA[2]~synth"
+    Warning (13010): Node "LCD_DATA[3]~synth"
+    Warning (13010): Node "LCD_DATA[4]~synth"
+    Warning (13010): Node "LCD_DATA[5]~synth"
+    Warning (13010): Node "LCD_DATA[6]~synth"
+    Warning (13010): Node "LCD_DATA[7]~synth"
+    Warning (13010): Node "AUD_DACLRCK~synth"
+    Warning (13010): Node "AUD_BCLK~synth"
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "HEX3[1]" is stuck at GND
+    Warning (13410): Pin "HEX3[2]" is stuck at GND
+    Warning (13410): Pin "HEX3[6]" is stuck at VCC
+    Warning (13410): Pin "LEDR[8]" is stuck at GND
+    Warning (13410): Pin "LEDR[9]" is stuck at GND
+    Warning (13410): Pin "LEDR[10]" is stuck at GND
+    Warning (13410): Pin "LEDR[11]" is stuck at GND
+    Warning (13410): Pin "LEDR[12]" is stuck at GND
+    Warning (13410): Pin "LEDR[13]" is stuck at GND
+    Warning (13410): Pin "LEDR[14]" is stuck at GND
+    Warning (13410): Pin "LEDR[15]" is stuck at GND
+    Warning (13410): Pin "LEDR[16]" is stuck at GND
+    Warning (13410): Pin "LEDR[17]" is stuck at GND
+    Warning (13410): Pin "LCD_ON" is stuck at VCC
+    Warning (13410): Pin "LCD_BLON" is stuck at VCC
+    Warning (13410): Pin "LCD_RW" is stuck at GND
+    Warning (13410): Pin "VGA_SYNC" is stuck at GND
+Info (17049): 50 registers lost all their fanouts during netlist optimizations.
+Critical Warning (138069): Setting INCREMENTAL_COMPILATION to "OFF" is no longer supported. Assignment is ignored. To disable partitions, set the IGNORE_PARTITIONS global assignment to "ON" instead.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 1 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 13 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "EXT_CLOCK"
+    Warning (15610): No output dependent on input pin "KEY[1]"
+    Warning (15610): No output dependent on input pin "KEY[2]"
+    Warning (15610): No output dependent on input pin "SW[7]"
+    Warning (15610): No output dependent on input pin "SW[8]"
+    Warning (15610): No output dependent on input pin "SW[9]"
+    Warning (15610): No output dependent on input pin "SW[10]"
+    Warning (15610): No output dependent on input pin "SW[11]"
+    Warning (15610): No output dependent on input pin "SW[12]"
+    Warning (15610): No output dependent on input pin "SW[13]"
+    Warning (15610): No output dependent on input pin "SW[14]"
+    Warning (15610): No output dependent on input pin "SW[15]"
+    Warning (15610): No output dependent on input pin "AUD_ADCDAT"
+Info (21057): Implemented 2655 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 28 input pins
+    Info (21059): Implemented 126 output pins
+    Info (21060): Implemented 10 bidirectional pins
+    Info (21061): Implemented 2490 logic cells
+    Info (21065): Implemented 1 PLLs
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 280 warnings
+    Info: Peak virtual memory: 471 megabytes
+    Info: Processing ended: Mon Dec 01 13:39:06 2014
+    Info: Elapsed time: 00:00:21
+    Info: Total CPU time (on all processors): 00:00:19
+
+

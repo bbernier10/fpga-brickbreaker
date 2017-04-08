@@ -1,0 +1,57 @@
+module Ball_Movement(
+			iH_Cont,			
+			iV_Cont,
+			BTN0,
+			BTN3,
+			Paddle,
+			//	Control Signal
+			iCLK,
+			iRST_N	
+		);
+
+input [9:0]	iH_Cont;
+input [9:0]	iV_Cont;
+input BTN0, BTN3;
+output Paddle;
+
+//	Control Signal
+input						iCLK;
+input						iRST_N;
+	
+// Ball Movement	
+reg [9:0] ballX=320; //Start & Reset positions
+reg [8:0] ballY=440;
+reg ballXdir=1, ballYdir;
+reg bounceX, bounceY;
+	
+wire endOfFrame = (xpos == 0 && ypos == 480);
+	
+always @(posedge clk50) begin
+	if(SW7) begin	//Reset
+		ballX<=320;
+		ballY<=440;
+	end
+	if (endOfFrame && SW0 && SW1) begin // update ball position at end of each frame if game is on
+		if (ballXdir ^ bounceX)
+			if(SW2)
+				ballX <= ballX + 4;
+			else
+				ballX <= ballX + 2;
+		else 
+			if(SW2)
+				ballX <= ballX - 4;
+			else
+				ballX <= ballX - 2;	
+		if (ballYdir ^ bounceY) 
+			if(SW2)
+				ballY <= ballY + 4;
+			else
+				ballY <= ballY + 2;
+		else
+			if(SW2)
+				ballY <= ballY - 4;
+			else
+				ballY <= ballY - 2;	
+	end	
+end		
+		

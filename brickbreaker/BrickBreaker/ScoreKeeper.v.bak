@@ -1,0 +1,14 @@
+module ScoreKeeper(
+			Ball,
+			row_bricks,
+			Score,
+			iCLK
+		);
+
+input 		Ball;
+input [9:0]	row_bricks;
+input 		iCLK;
+
+output [9:0]Score;
+
+

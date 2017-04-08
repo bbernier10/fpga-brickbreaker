@@ -1,0 +1,56 @@
+module paddle(
+			iH_Cont,			
+			iV_Cont,
+			BTN0,
+			BTN3,
+			oPaddle,
+			//	Control Signal
+			iCLK,
+			iRST_N	
+		);
+
+input [9:0]	iH_Cont;
+input [9:0]	iV_Cont;
+input BTN0, BTN3;
+output oPaddle;
+
+//	Control Signal
+input						iCLK;
+input						iRST_N;
+	
+// paddle movement		
+reg [9:0]  paddlePosition=152;
+reg [25:0] counter;
+
+assign oPaddle	= (iH_Cont >= paddlePosition+4 && iH_Cont <= paddlePosition+124 && iV_Cont >= 460 && iV_Cont <= 465);
+
+always @(posedge iCLK) begin
+	counter<=counter+1;
+	//if(SW7) paddlePosition<=258;	//Reset position
+	if(counter==75000) 
+	begin
+		counter<=0;
+		if(BTN3 && !BTN0) 
+		begin
+			/*if(SW3)begin
+				if(paddlePosition<574)
+					paddlePosition <= paddlePosition + 1;
+			end
+			else begin*/
+			if(paddlePosition > 670)
+				paddlePosition <= 669;
+			if(paddlePosition < 670)   	// make sure the value doesn't overflow
+				paddlePosition <= paddlePosition + 1;
+			//end
+		end
+		else 
+		begin
+			if(BTN0 && !BTN3) 
+			begin
+				if(paddlePosition > 152)        // make sure the value doesn't underflow
+					paddlePosition <= paddlePosition - 1;
+			end
+		end
+	end
+end						
+endmodule

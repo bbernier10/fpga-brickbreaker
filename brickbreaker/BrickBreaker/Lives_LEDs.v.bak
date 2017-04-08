@@ -1,0 +1,24 @@
+module Lives_LEDs(
+			LEDG,
+			Lives,
+		);
+
+input		[7:0]	Lives;
+output	[8:0]	LEDG;
+
+always @(Lives) begin
+	case(Lives)
+		8'h00:	LEDG	<=	9'b000000000;
+		8'h01:	LEDG	<=	9'b000000001;
+		8'h02:	LEDG	<=	9'b000000010;
+		8'h03:	LEDG	<=	9'b000000100;
+		8'h04:	LEDG	<=	9'b000001000;
+		8'h05:	LEDG	<=	9'b000010000;
+		8'h06:	LEDG	<=	9'b000100000;
+		8'h07:	LEDG	<=	9'b001000000;
+		8'h08:	LEDG	<=	9'b010000000;
+		8'h09:	LEDG	<=	9'b100000000;
+		default:	LEDG	<= 9'b000000000;
+	endcase
+
+endmodule

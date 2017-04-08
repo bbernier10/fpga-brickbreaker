@@ -1,0 +1,28 @@
+module Lives_Counter(
+			Bottom_Hit,
+			Lives,
+			//	Control Signal
+			iCLK,
+			iRST_N	
+		);
+
+input [9:0]		xpos;
+
+output [7:0] 	Lives=8'h03;
+output			GameOver
+
+//	Control Signal
+input						iCLK;
+input						iRST_N;
+	
+reg [25:0] counter;
+
+always @(negedge iRST_N) begin
+	if(!iRST_N)	Lives <= 8'h03;
+	else			Lives	<= Lives;
+end
+
+always @(Bottom_Hit) begin
+	if(Lives!=0) 	Lives <= Lives - 1;
+	else 				GameOver <= 1;
+end

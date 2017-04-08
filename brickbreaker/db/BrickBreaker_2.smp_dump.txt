@@ -1,0 +1,32 @@
+
+State Machine - |BrickBreaker_2|LCD_TEST:u5|mLCD_ST
+Name mLCD_ST.000011 mLCD_ST.000010 mLCD_ST.000001 mLCD_ST.000000 
+mLCD_ST.000000 0 0 0 0 
+mLCD_ST.000001 0 0 1 1 
+mLCD_ST.000010 0 1 0 1 
+mLCD_ST.000011 1 0 0 1 
+
+State Machine - |BrickBreaker_2|LCD_TEST:u5|LCD_Controller:u0|ST
+Name ST.11 ST.10 ST.01 ST.00 
+ST.00 0 0 0 0 
+ST.01 0 0 1 1 
+ST.10 0 1 0 1 
+ST.11 1 0 0 1 
+
+State Machine - |BrickBreaker_2|ps2_keyboard:u3|m1_state
+Name m1_state.m1_rx_rising_edge_marker m1_state.m1_rx_falling_edge_marker m1_state.m1_tx_reset_timer m1_state.m1_tx_first_wait_clk_l m1_state.m1_tx_first_wait_clk_h m1_state.m1_tx_rising_edge_marker m1_state.m1_tx_error_no_keyboard_ack m1_state.m1_tx_done_recovery m1_state.m1_tx_wait_keyboard_ack m1_state.m1_tx_clk_l m1_state.m1_tx_clk_h m1_state.m1_tx_force_clk_l m1_state.m1_tx_wait_clk_h m1_state.m1_rx_clk_l m1_state.m1_rx_clk_h 
+m1_state.m1_rx_clk_h 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+m1_state.m1_rx_clk_l 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+m1_state.m1_tx_wait_clk_h 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+m1_state.m1_tx_force_clk_l 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+m1_state.m1_tx_clk_h 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+m1_state.m1_tx_clk_l 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+m1_state.m1_tx_wait_keyboard_ack 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+m1_state.m1_tx_done_recovery 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+m1_state.m1_tx_error_no_keyboard_ack 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+m1_state.m1_tx_rising_edge_marker 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+m1_state.m1_tx_first_wait_clk_h 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+m1_state.m1_tx_first_wait_clk_l 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+m1_state.m1_tx_reset_timer 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+m1_state.m1_rx_falling_edge_marker 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+m1_state.m1_rx_rising_edge_marker 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
